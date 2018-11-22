@@ -60,7 +60,8 @@ public class Util {
 
 	//public static final String basepath = "C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps/office/" ;//服务器
 	//public static final String basepath ="C:/Program Files/apache-tomcat-7.0.59-windows-x86/apache-tomcat-7.0.59/webapps/office/";
-	public static final String basepath ="C:/Program Files (x86)/apache-tomcat-7.0.59/webapps/office";
+	//public static final String basepath ="C:/Program Files (x86)/apache-tomcat-7.0.59/webapps/office";
+	public static final String basepath ="C:/Program Files/apache-tomcat-7.0.59/webapps/office/";
 	//public static final String basepath ="D:/Program Files/Apache Software Foundation/apache-tomcat-7.0.59/webapps/office/";
 
 	public static final String downloadpath = basepath+"derive/" ;//下载
