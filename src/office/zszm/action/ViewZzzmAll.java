@@ -297,6 +297,7 @@ public class ViewZzzmAll {
 				else if(zhi.equals("2"))//团队负责人
 				{
 					hql += " and tz.chu='"+chu+"'";
+					chutuan = Integer.valueOf(chu);
 				}
 				
 				else if(zhi.equals("4"))//组长

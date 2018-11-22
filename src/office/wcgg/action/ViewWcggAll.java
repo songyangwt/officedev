@@ -297,6 +297,7 @@ public class ViewWcggAll {
 				if(zhi.equals("2"))//团队负责人
 				{
 					hql += " and (wp.chu='"+chu+"')";
+					chutuan = Integer.valueOf(chu);
 				}
 				
 				if(zhi.equals("4"))//组长

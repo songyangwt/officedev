@@ -302,6 +302,7 @@ public class ViewYscjAll {
 				else if((zhi.equals("2"))&&(!authoK.equals("K")))//团队负责人
 				{
 					hql += " and ty.chu='"+chu+"'";
+					chutuan = Integer.valueOf(chu);
 				}
 			
 				else if(zhi.equals("4"))//组长

@@ -346,6 +346,7 @@ public class ViewAll {
 				else if(zhi.equals("2"))//团队负责人
 				{
 					hql += " and lp.chu="+chu;
+					chutuan = Integer.valueOf(chu);
 				}
 			
 				else if(zhi.equals("4"))//组长
