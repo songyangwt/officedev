@@ -531,11 +531,11 @@ ${daohang}
     				&nbsp;
     			</td>
     			<td colspan="8">
-    			  <input type="hidden" name="leavepagenumber" value="${leavepagenumber}"/>
-    				<input type="hidden" name="newnumber" value="${newnumber}"/>
-    				<input type="hidden" name="afterworkdaysession" value="${afterworkdaysession}"/>
-    				<input type="hidden" name="beforeworkdaysession" value="${beforeworkdaysession}"/>
-    				<input type="hidden" name="notholidaysession" value="${notholidaysession}"/>
+    			  <input type="hidden" id="leavepagenumber"  name="leavepagenumber" value="${leavepagenumber}"/>
+    				<input type="hidden" id="newnumber" name="newnumber" value="${newnumber}"/>
+    				<input type="hidden" id="afterworkdaysession"  name="afterworkdaysession" value="${afterworkdaysession}"/>
+    				<input type="hidden" id="beforeworkdaysession"  name="beforeworkdaysession" value="${beforeworkdaysession}"/>
+    				<input type="hidden" id="notholidaysession"  name="notholidaysession" value="${notholidaysession}"/>
     		
     				<input style="width:70px" type="button" onclick="tijiao()" value="提  交"/>
     			</td>

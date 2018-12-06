@@ -259,7 +259,7 @@ public class UserUtil {
 	 * @param s
 	 * @return
 	 */
-	public static String positionTofzr(String position)
+	public static String positionTofzr(String position,int type)
 	{
 		if(position==null||position.equals(""))
 		{
@@ -282,15 +282,15 @@ public class UserUtil {
 					return "综合与生产管理处";
 				}
 			}
-			else if(c=='3'&&z=='3')
+			else if(c=='3'&&z=='3'&&(type!=2&&type!=11&&type!=15))
 			{
 				return "业务处理"+t+"组";
 			}
-			else if(c=='6'&&z=='3')
+			else if(c=='6'&&z=='3'&&(type!=2&&type!=11&&type!=15))
 			{
 				return "专业处理"+t+"组";
 			}
-			else if(c=='2'&&z=='3')
+			else if(c=='2'&&z=='3'&&(type!=2&&type!=11&&type!=15))
 			{
 				if(t=='1')
 				{

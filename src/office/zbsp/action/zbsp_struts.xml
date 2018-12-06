@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">  
+<struts>
+	
+	<package name="zbsp_default" extends="struts-default" >
+		<action name="showzbsppage" class="office.zbsp.action.ShowzbspPage">
+			<result name="success">/page/zbsp/zbsp_page.jsp</result>
+		</action>
+		<action name="subzbsppage" class="office.zbsp.action.SubzbspPage">
+			<result name="success">/page/zbsp/zbsp_sub_success.jsp</result>
+			<result name="failed">/page/public/error.jsp</result>
+			<result name="nozbsp">/page/public/error.jsp</result>
+		</action>
+		<action name="viewzbsp" class="office.zbsp.action.ViewzbspLzz">
+			<result name="success">/page/zbsp/zbsp_lzz_list.jsp</result>
+		</action>
+		<action name="viewzbspunder" class="office.zbsp.action.ViewzbspUnder">
+			<result name="success">/page/zbsp/zbsp_under_list.jsp</result>
+		</action>
+		<action name="viewzbspdetail" class="office.zbsp.action.ViewzbspDetail">
+			<result name="success">/page/zbsp/zbsp_detail.jsp</result>
+		</action>
+		<action name="zbspunderdetail" class="office.zbsp.action.ViewzbspUnderDetail">
+			<result name="success">/page/zbsp/zbsp_under_detail.jsp</result>
+		</action>
+		<action name="zbspshenpi" class="office.zbsp.action.zbspShenpi">
+			<result name="success">/page/zbsp/zbsp_under_success.jsp</result>
+		</action>
+		<action name="updatezbspstatus" class="office.zbsp.action.UpdatezbspStatus">
+			<result name="success">/page/zbsp/zbsp_under_success.jsp</result>
+		</action>
+		<action name="deletezbsppage" class="office.zbsp.action.DeletezbspPage">
+			<result name="success">/page/zbsp/zbsp_under_success.jsp</result>
+		</action>
+		<action name="viewzbspycb" class="office.zbsp.action.ViewzbspYcb">
+			<result name="success">/page/zbsp/zbsp_ycb.jsp</result>
+		</action>
+		<action name="exportzbsp" class="office.zbsp.action.Exportzbsp">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="viewzbspall" class="office.zbsp.action.ViewzbspAll">
+			<result name="success">/page/zbsp/zbsp_all.jsp</result>
+			<result name="successtd">/page/zbsp/zbsp_alltd.jsp</result>
+		</action>
+		<action name="viewzbspsummary" class="office.zbsp.action.ViewzbspSummary">
+			<result name="success">/page/zbsp/zbsp_summary.jsp</result>
+			<result name="successtd">/page/zbsp/zbsp_summarytd.jsp</result>
+		</action>
+		<action name="exportzbspsummary" class="office.zbsp.action.ExportzbspSummary">
+			<result name="success">/page/public/derivedetail.jsp</result>
+		</action>
+		<action name="viewzbspybj" class="office.zbsp.action.ViewzbspYbj">
+			<result name="success">/page/zbsp/zbsp_ybj.jsp</result>
+		</action>
+		<action name="viewzpdall" class="office.zbsp.action.ViewzpdAll">
+			<result name="success">/page/zbsp/zbsp_txmx.jsp</result>
+		</action>
+		<action name="importzbsp" class="office.zbsp.action.Importzbsp">
+			<result name="success">/page/pb/pbimportsuccess.jsp</result>
+		</action>
+		
+		<action name="showzbsppagedf" class="office.zbsp.action.ShowzbspPageDf">
+			<result name="success">/page/zbsp/zbsp_page_df.jsp</result>
+		</action>
+		<action name="showzbsppagedfajax" class="office.zbsp.action.ShowzbspPageDfAjax">
+			<result name="success">/page/zbsp/zbsp_page_df_ajax.jsp</result>
+			<result name="failed">/page/leave/faileded.jsp</result>
+			<result name="failededed">/page/leave/failededed.jsp</result>
+		</action>
+	</package>
+</struts>    

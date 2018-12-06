@@ -48,7 +48,7 @@ public class Leave_ajax {
 		
 		String name=request.getParameter("name");
 		LeavePageDAO lpd=new LeavePageDAO();
-		String position=lpd.findboss(name);
+		String position=lpd.findboss(name,0);
 		
 		String zhi=position.substring(0,1);
 		String chu=position.substring(1,2);

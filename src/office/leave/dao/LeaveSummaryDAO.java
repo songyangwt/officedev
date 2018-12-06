@@ -45,6 +45,8 @@ public class LeaveSummaryDAO extends BaseHibernateDAO  {
 	public static final String PEIKAOLEAVE = "peikaoleave";
 	public static final String BURULEAVE = "buruleave";
 	public static final String REMARK = "remark";
+	public static final String ZHIBANREST = "zhibanrest";
+	public static final String ZHIBANLEAVE = "zhibanleave";
 
 
 
@@ -240,6 +242,18 @@ public class LeaveSummaryDAO extends BaseHibernateDAO  {
 		);
 	}
 	
+	public List findByZhibanrest(Object zhibanrest
+	) {
+		return findByProperty(ZHIBANREST, zhibanrest
+		);
+	}
+	
+	public List findByZhibanleave(Object zhibanleave
+	) {
+		return findByProperty(ZHIBANLEAVE, zhibanleave
+		);
+	}
+	
 
 	public List findAll() {
 		log.debug("finding all LeaveSummary instances");
@@ -287,6 +301,7 @@ public class LeaveSummaryDAO extends BaseHibernateDAO  {
             throw re;
         }
     }
+    
     public LeaveSummary findByYearAndName(int year,String name) {
     	log.debug("finding all LeaveSummary instances");
     	try {

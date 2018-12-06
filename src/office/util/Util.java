@@ -60,7 +60,7 @@ public class Util {
 
 	//public static final String basepath = "C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps/office/" ;//服务器
 	//public static final String basepath ="C:/Program Files/apache-tomcat-7.0.59-windows-x86/apache-tomcat-7.0.59/webapps/office/";
-	public static final String basepath ="C:/Program Files (x86)/apache-tomcat-7.0.59/webapps/office";
+	public static final String basepath ="C:/Program Files (x86)/apache-tomcat-7.0.59/webapps/office/";
 	//public static final String basepath ="D:/Program Files/Apache Software Foundation/apache-tomcat-7.0.59/webapps/office/";
 
 	public static final String downloadpath = basepath+"derive/" ;//下载
@@ -77,7 +77,7 @@ public class Util {
 	public static final String beginday = "01";
 	public static final String endday = "31";
 	public static final List<Integer> leavedays = Arrays.asList(4,5,6,7,8,9,13,14);//婚产探丧工，陪考假，哺乳假
-	public static final List<Integer> leaveworkdays = Arrays.asList(1,2,3,10,11,12);//年病，事，公，加，产检
+	public static final List<Integer> leaveworkdays = Arrays.asList(1,2,3,10,11,12,15);//年病，事，公，加，产检
 
 	//尺子=123456789A123456789B123456789C123456789D123456789E123456789F123456789G
 	

@@ -34,6 +34,8 @@ public abstract class AbstractLeaveSummary  implements java.io.Serializable {
      private Double peikaoleave;
      private Double buruleave;
      private String remark;
+     private Double zhibanrest;
+     private Double zhibanleave;
 
 
     // Constructors
@@ -44,7 +46,7 @@ public abstract class AbstractLeaveSummary  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractLeaveSummary(Integer year, String name, String newnumber, String position, Double yearall, Double yearleave, Double workrest, Double workleave, Double bingleave, Double shileave, Double hunleave, Double chanleave, Double tanpoleave, Double tanfmleave, Double sangleave, Double shangleave, Double gongleave, Double qitaleave, Double peikaoleave, Double buruleave, String remark) {
+    public AbstractLeaveSummary(Integer year, String name, String newnumber, String position, Double yearall, Double yearleave, Double workrest, Double workleave, Double bingleave, Double shileave, Double hunleave, Double chanleave, Double tanpoleave, Double tanfmleave, Double sangleave, Double shangleave, Double gongleave, Double qitaleave, Double peikaoleave, Double buruleave, String remark, Double zhibanrest, Double zhibanleave) {
         this.year = year;
         this.name = name;
         this.newnumber = newnumber;
@@ -66,6 +68,8 @@ public abstract class AbstractLeaveSummary  implements java.io.Serializable {
         this.peikaoleave = peikaoleave;
         this.buruleave = buruleave;
         this.remark = remark;
+        this.zhibanrest = zhibanrest;
+        this.zhibanleave = zhibanleave;
     }
 
    
@@ -245,6 +249,22 @@ public abstract class AbstractLeaveSummary  implements java.io.Serializable {
     
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Double getZhibanrest() {
+        return this.zhibanrest;
+    }
+    
+    public void setZhibanrest(Double zhibanrest) {
+        this.zhibanrest = zhibanrest;
+    }
+
+    public Double getZhibanleave() {
+        return this.zhibanleave;
+    }
+    
+    public void setZhibanleave(Double zhibanleave) {
+        this.zhibanleave = zhibanleave;
     }
    
 

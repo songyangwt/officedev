@@ -86,8 +86,9 @@ $('#chutuan').attr('value',x[2].value);
 										<option value="8">丧假</option>
 										<option value="9">工伤假</option>
 										<option value="10">公假</option>
-										<option value="11">加班调休</option>
+										<option value="11">加班补休</option>
 										<option value="12">产检</option>
+										<option value="15">值班调休</option>
 									</select>						
 									状态								
 						    		<select style="width: 70px" id="status" name="status" style="width: 130px">

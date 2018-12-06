@@ -361,9 +361,9 @@ b{
     				&nbsp;
     			</td>
     			<td colspan="5">
-    				<input type="hidden" name="newnumber" value="${newnumber}"/>
-    				<input type="hidden" name="chuname" value=""/>
-    				<input type="hidden" name="allname" value=""/>
+    				<input type="hidden" id="newnumber"  name="newnumber" value="${newnumber}"/>
+    				<input type="hidden" id="chuname"  name="chuname" value=""/>
+    				<input type="hidden" id="chuname" name="chuname" value=""/>
     				<input type="button" onclick="tijiao()" value="提  交"/>
     				<span class="tip">（本次加班产生的调休将于6个月后失效！）</span>
     				

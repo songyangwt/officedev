@@ -237,7 +237,22 @@
 			<generator class="native"></generator>
 		</primary-key>
 	</table>
-<table name="t_uass_code" catalog="office" class="UassCode">
+	<table name="t_uass_code" catalog="office" class="UassCode">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="t_zbsp_page" catalog="office">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="t_zbsp_page_di" catalog="office">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="t_zbsp_summary" catalog="office">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

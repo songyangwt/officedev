@@ -757,7 +757,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     		</c:if>
     		<c:if test="${youshenpi!=1}"> 
-    			<input type="hidden" name="xuanze" value=""/>
+    			<input type="hidden" name="xuanze" id="xuanze" value=""/>
     		</c:if>
     		<tr>
     			<td>

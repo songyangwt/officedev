@@ -284,8 +284,13 @@ public class SubLeavePage {
 			//process = 4;
 			process = 17;
 			result = "success";
-			}else {
-				if((type==1||type==2||type==3||type==11||type==12)&&(sumdate<=1.0))//一天以内
+			}
+		else if (type==2||type==11||type==15)
+		{
+			process = 16;
+		}
+		else {
+				if((type==1||type==3||type==12)&&(sumdate<=1.0))//一天以内
 				{
 					if((chu==2||chu==3||chu==6)&&zhi==3)//生产人员普通员工
 					{

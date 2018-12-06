@@ -19,6 +19,9 @@ import office.userinfo.pojo.UserInfo;
 import office.util.DateUtil;
 import office.util.UserUtil;
 import office.util.Util;
+import office.zbsp.dao.TZbspPageDiDAO;
+import office.zbsp.dao.TZbspSummaryDAO;
+import office.zbsp.pojo.TZbspSummary;
 
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
@@ -463,6 +466,7 @@ public class LeavePageDAO extends BaseHibernateDAO  {
     {
     	LeaveSummaryDAO lsdao = new LeaveSummaryDAO();
     	JbspPageDiDAO jpddao = new JbspPageDiDAO();
+    	TZbspPageDiDAO zpddao = new TZbspPageDiDAO();
     	UserInfoDAO uidao = new UserInfoDAO();
     	String name = uidao.findByNewNumber(newnumber).getUsername();
     	LeaveMonthSummaryDAO lmsdao = new LeaveMonthSummaryDAO();
@@ -607,13 +611,84 @@ public class LeavePageDAO extends BaseHibernateDAO  {
     		ls.setBuruleave(ls.getBuruleave()+days);
     		lms.setBuruleave(lms.getBuruleave()+days);
     	}
+    	else if(type==15)//值班调休
+    	{
+    		//JbspSummary
+    		TZbspSummaryDAO jsdao = new TZbspSummaryDAO();
+    		double lastrestdays=0.0;
+    		TZbspSummary js = jsdao.findAllByYearAndNewNumber(String.valueOf(year),newnumber);
+    		TZbspSummary jspre = jsdao.findAllByYearAndNewNumber(String.valueOf(year-1),newnumber);
+        	if(jspre==null)
+        	{
+        		lastrestdays=0.0;
+        	}
+        	else
+        	{
+        		lastrestdays = jspre.getDays()-jspre.getDidays();
+        	}
+    		if((lastrestdays)>=days)//如果去年的加班剩余调休天数还足够，则用去年的天数抵用
+    		{
+    			jspre.setDidays(jspre.getDidays()+days);
+    		}
+    		else//如果去年加班剩余调休天数不够抵用，分两部分抵用
+    		{
+    			double lastyeardays = lastrestdays;
+    			double thisyeardays = days - lastyeardays;//
+    			if(jspre!=null)
+    			{
+    				jspre.setDidays(jspre.getDays());
+    			}
+    			if(js==null)
+    			{
+    				zpddao.diKouzbdays(name, begindate, thisyeardays);
+    			}
+    			else if((js.getDidays()+thisyeardays)>js.getDays())//如果今年的已经被抵用完,在新生成的加班明细表中抵扣
+    			{
+    				double newdays = js.getDidays()+thisyeardays-js.getDays();//新加班调休
+    				js.setDidays(js.getDays());
+    				zpddao.diKouzbdays(name, begindate, newdays);
+    			}
+    			else//如果今年的未抵用完
+    			{
+    				js.setDidays(js.getDidays()+thisyeardays);
+    			}
+    			
+    		}
+    		//leavesummary
+    		if(lspre.getZhibanrest()>=days)//leavesummary去年够减
+    		{
+    			lspre.setZhibanrest(lspre.getZhibanrest()-days);
+    		}
+    		else//去年不够减
+    		{
+    			if(ls.getZhibanrest()>=(days-lspre.getZhibanrest()))
+    			{
+    				ls.setZhibanrest(ls.getZhibanrest()-(days-lspre.getZhibanrest()));
+    			}
+    			else
+    			{
+    				ls.setZhibanrest(0.0);
+    			}
+    			lspre.setZhibanrest(0.0);
+    		}
+    		ls.setZhibanleave(ls.getZhibanleave()+days);
+    		//lms.setZhibanleave(lms.getZhibanleave()+days);
+    		if(js!=null)
+    		{
+    			jsdao.merge(js);
+    		}
+    		if(jspre!=null)
+    		{
+    			jsdao.merge(jspre);
+    		}
+    	}
     	lsdao.merge(ls);
     	if(lspre!=null)
     	{
     		lsdao.merge(lspre);
     	}
     	
-    	lmsdao.merge(lms);
+    	//lmsdao.merge(lms);
     	String result="success";
     	
     	return result;
@@ -978,7 +1053,7 @@ public class LeavePageDAO extends BaseHibernateDAO  {
     		throw re;
     	}
     }
-    public String findboss(String name){
+    public String findboss(String name,int type){
     	String bossname="";
     	String chu="A";
     	String tuan="A";
@@ -1010,11 +1085,11 @@ public class LeavePageDAO extends BaseHibernateDAO  {
                 		hql2 = "from UserInfo where position like '1_1__'";// 条件查询HQL语句
                 	}
                 }
-                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("3"))//业务处理人员
+                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("3")&&(type!=2&&type!=11&&type!=15))//业务处理人员
                 {
                 	hql2 = "from UserInfo where position like '__"+chu+"_"+tuan+"' and authority like '%D%'";// 条件查询HQL语句
                 }
-                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("4"))//业务处理人员组长
+                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("4")&&(type!=2&&type!=11&&type!=15))//业务处理人员组长
                 {
                 	hql2 = "from UserInfo where position like '__"+chu+"__' and authority like '%B%'";// 条件查询HQL语句
                 }
@@ -1030,7 +1105,7 @@ public class LeavePageDAO extends BaseHibernateDAO  {
                 if(mylist.size()>=1){
                	 for(int i=0;i<mylist.size();i++){
                		 UserInfo ui = mylist.get(i);
-                   	 array1 = UserUtil.positionTofzr(position);
+                   	 array1 = UserUtil.positionTofzr(position,type);
                    	 array1+="（";
                    	 array1+=ui.getUsername();
                    	 array1+="）";

@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     		</c:if>
     		<c:if test="${youshenpi!=1}"> 
-    			<input type="hidden" name="xuanze" value=""/>
+    			<input type="hidden" name="xuanze" id="xuanze" value=""/>
     		</c:if>
     		<tr>
     			<td>
@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td colspan="5">
     				<input type="hidden" name="number" value="${kp.number}"/>
     				<input type="hidden" name="thisunder" value="${undersign}"/>
-    				<input type="hidden" name="thisnewnumber" value="${newnumber}"/>
+    				<input type="hidden" id="thisnewnumber" name="thisnewnumber" value="${newnumber}"/>
     				<input type="hidden" name="thisundername" value="${username}"/>
     				<input type="button" onclick="tijiao()"  value="提  交" />&nbsp;&nbsp;&nbsp;&nbsp;
     				<input type="button" onclick="javascript:history.go(-1);" value="返  回" />

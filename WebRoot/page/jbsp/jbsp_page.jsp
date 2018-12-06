@@ -319,9 +319,9 @@ b{
     				&nbsp;
     			</td>
     			<td colspan="5">
-    				<input type="hidden" name="newnumber" value="${newnumber}"/>
-    				<input type="hidden" name="chuname" value="${chuname}"/>
-    				<input type="hidden" name="allname" value="${allname}"/>
+    				<input type="hidden" id="newnumber"  name="newnumber" value="${newnumber}"/>
+    				<input type="hidden" id="chuname"  name="chuname" value="${chuname}"/>
+    				<input type="hidden" id="allname" name="allname" value="${allname}"/>
     				<c:if test="${nonext=='you'}">
     				<input type="button" onclick="tijiao()" value="提  交"/>
     				<span class="tip">（本次加班产生的调休将于6个月后失效！）</span>

@@ -77,7 +77,7 @@ public class LeaveUtil {
 		}
 		else if(type==11)
 		{
-			result = "加班调休";
+			result = "加班补休";
 		}
 		else if(type==12)
 		{
@@ -90,6 +90,10 @@ public class LeaveUtil {
 		else if(type==14)
 		{
 			result = "哺乳假";
+		}
+		else if(type==15)
+		{
+			result = "值班调休";
 		}
 		return result;
 	}
@@ -153,7 +157,7 @@ public class LeaveUtil {
 		}
 		else if(type==11)
 		{
-			result = "加班调休";
+			result = "加班补休";
 		}
 		else if(type==12)
 		{
@@ -166,6 +170,10 @@ public class LeaveUtil {
 		else if(type==14)
 		{
 			result = "哺乳假";
+		}
+		else if(type==15)
+		{
+			result = "值班调休";
 		}
 		return result;
 	}

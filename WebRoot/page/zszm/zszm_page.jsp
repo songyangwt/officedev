@@ -301,7 +301,7 @@ b{
     				&nbsp;
     			</td>
     			<td colspan="5">
-    				<input type="hidden" name="newnumber" value="${newnumber}"/>
+    				<input type="hidden" id="newnumber"  name="newnumber" value="${newnumber}"/>
     				<input style="width:70px" type="button" onclick="tijiao()" value="提  交"/>
     			</td>
     		</tr>

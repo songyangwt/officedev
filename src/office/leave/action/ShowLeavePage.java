@@ -21,6 +21,7 @@ import office.userinfo.pojo.UserInfo;
 import office.util.DateUtil;
 import office.util.UserUtil;
 import office.util.Util;
+import office.zbsp.dao.TZbspPageDiDAO;
 
 /**
  * 请假页面展示
@@ -48,6 +49,7 @@ public class ShowLeavePage {
 	private int yearcishu;
 	
 	private double jbsprestdays;
+	private double zbsprestdays;
 	private double chanrestdays;
 	private double tanfmrestdays;
 	private double tanporestdays;
@@ -58,6 +60,13 @@ public class ShowLeavePage {
 	//本年度休假情况
 	private LeaveSummary thisyear;
 	
+	
+	public double getZbsprestdays() {
+		return zbsprestdays;
+	}
+	public void setZbsprestdays(double zbsprestdays) {
+		this.zbsprestdays = zbsprestdays;
+	}
 	public String getNewnumber() {
 		return newnumber;
 	}
@@ -204,6 +213,7 @@ public class ShowLeavePage {
 		UserInfoDAO uidao = new UserInfoDAO();
 		LeavePageDAO lpdao = new LeavePageDAO();
 		JbspPageDiDAO jpddao = new JbspPageDiDAO();
+		TZbspPageDiDAO zpddao = new TZbspPageDiDAO();
 		LeaveSummaryDAO lsdao = new LeaveSummaryDAO();
 		DateUtil du = new DateUtil();
 		int year = du.getThisYear();
@@ -216,14 +226,17 @@ public class ShowLeavePage {
 	    	name = ui.getUsername();
 	    	yearcishu = lpdao.findYearShengyuCishu(newnumber,year);
 	    	double yeardays = lpdao.findSumByApplicant(newnumber, 169, year,2);//当年流转中年假天数
-	    	double jbdays = lpdao.findSumByApplicant(newnumber, 169, year,11);//当年流转中加班调休天数
+	    	double jbdays = lpdao.findSumByApplicant(newnumber, 169, year,11);//当年流转中加班补休天数
+	    	double zbdays = lpdao.findSumByApplicant(newnumber, 169, year,15);//当年流转中值班调休天数
 	    	LeaveSummary lsthisyear = lsdao.findByYearAndNewnumber(year,newnumber);
 	    	LeaveSummary lslastyear = lsdao.findByYearAndNewnumber(year-1,newnumber);
 	    	String begindate = du.getStringDate();
 	    	double newjbrest = jpddao.findDaysByBegindateEnddateName(begindate, name);
+	    	double newzbrest = zpddao.findDaysByBegindateEnddateName(begindate, name);
 	    	if(lsthisyear!=null&&lslastyear!=null)
 	    	{
 	    		jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()+newjbrest-jbdays;
+	    		zbsprestdays = newzbrest-zbdays;
 	    		//jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()-jbdays;
 	    	}
 	    	
@@ -280,7 +293,7 @@ public class ShowLeavePage {
 	    	
 	    }
 	    LeavePageDAO lpd=new LeavePageDAO();
-	    bossname=lpd.findboss(name);
+	    bossname=lpd.findboss(name,0);
 	    
 	    if(dai==1)
 	    {

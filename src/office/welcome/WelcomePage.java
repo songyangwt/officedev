@@ -38,6 +38,7 @@ import office.mjgl.dao.TMjglPageDAO;
 import office.mjgl.dao.TMjglDAO;
 import office.mjgl.pojo.TMjgl;
 import office.mjgl.pojo.TMjglPage;
+import office.zbsp.pojo.TZbspPage;
 import office.zcgl.pojo.*;
 import office.zcgl.dao.*;
 /**
@@ -55,6 +56,8 @@ public class WelcomePage {
 	private List<WcggPage> listwp;
 	private List<WcggPage> listwpkq;
 	private List<JbspPage> listjp;
+	
+	private List<TZbspPage> listzp;
 	private List<KqqsPage> listkp;
 	private List<XxsqPage> listxp;
 	private List<XxsqPage> listxpkq;
@@ -85,6 +88,14 @@ public class WelcomePage {
     
     
     
+	public List<TZbspPage> getListzp() {
+		return listzp;
+	}
+
+	public void setListzp(List<TZbspPage> listzp) {
+		this.listzp = listzp;
+	}
+
 	public List<WelcomeBean> getListwb1() {
 		return listwb1;
 	}
@@ -416,6 +427,9 @@ public class WelcomePage {
 			listwp = session.createQuery(hql).list();
 			hql = "from JbspPage as jp where substr(jp.thisunder,1,8)='"+newnumber1+"' or (substr(jp.initiator,1,8)='"+newnumber1+"' and jp.status in (0,5)) order by jp.id desc";
 			listjp = session.createQuery(hql).list();
+			
+			hql = "from TZbspPage as jp where substr(jp.thisunder,1,8)='"+newnumber1+"' or (substr(jp.initiator,1,8)='"+newnumber1+"' and jp.status in (0,5)) order by jp.id desc";
+			listzp = session.createQuery(hql).list();
 			hql = "from KqqsPage as kp where substr(kp.thisunder,1,8)='"+newnumber1+"' or (substr(kp.initiator,1,8)='"+newnumber1+"' and kp.status in (0,5)) order by kp.id desc";
 			listkp = session.createQuery(hql).list();
 			hql = "from XxsqPage as xp where substr(xp.undertake,1,8)='"+newnumber1+"' or (substr(xp.initiator,1,8)='"+newnumber1+"' and xp.status in (0,5)) order by xp.id desc";
@@ -628,6 +642,25 @@ public class WelcomePage {
 				wb.setStatus(jp.getStatus());
 				listwb1.add(wb);
 			}
+			
+			for(int i=0;i<listzp.size();i++)
+			{
+				TZbspPage zp = listzp.get(i);
+				UserInfo ui = uidao.findByNewNumber(zp.getApplicant());
+				WelcomeBean wb = new WelcomeBean();
+				wb.setDate(zp.getDate());
+				wb.setInitiator(zp.getInitiator());
+				wb.setName(zp.getPeople());
+				if(ui!=null)
+				wb.setChu(UserUtil.positionToName(ui.getPosition()));
+				wb.setPreunder(LeaveUtil.NewNumberToNameNoSession(zp.getPreunder()));
+				wb.setNumber(zp.getNumber());
+				wb.setType1("值班申请");
+				wb.setType2("");
+				wb.setStatus(zp.getStatus());
+				listwb1.add(wb);
+			}
+			
 			for(int i=0;i<listkp.size();i++)
 			{
 				KqqsPage kp = listkp.get(i);

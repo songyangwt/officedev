@@ -37,6 +37,8 @@ import org.hibernate.Transaction;
 import ccb.hibernate.HibernateSessionFactory;
 import office.srzm.dao.TSrzmDAO;
 import office.srzm.pojo.TSrzm;
+import office.zbsp.dao.TZbspPageDAO;
+import office.zbsp.pojo.TZbspPage;
 import office.zcgl.dao.AssetApplyDAO;
 import office.zcgl.pojo.AssetApply;
 import office.zcgl.dao.AssetBorrowDAO;
@@ -185,6 +187,15 @@ public class FindNextUnder {
 		{
 			JbspPageDAO jpdao = new JbspPageDAO();
 			JbspPage jp = jpdao.findAllByNumber(number);
+			newnumber = jp.getApplicant();
+			applicant = jp.getProcess();
+			jindu = jp.getJindu();
+		}
+		
+		else if(item.equals("ZBSP"))
+		{
+			TZbspPageDAO jpdao = new TZbspPageDAO();
+			TZbspPage jp = jpdao.findAllByNumber(number);
 			newnumber = jp.getApplicant();
 			applicant = jp.getProcess();
 			jindu = jp.getJindu();

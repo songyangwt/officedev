@@ -139,6 +139,26 @@ public class GetProcessByPosition {
 		}
 		return process;
 	}
+	
+	/**
+	 * 根据position查询值班流程编号
+	 * @param position
+	 * @return
+	 */
+	public int getzbspProcess(String position)
+	{
+		int zhi = Integer.parseInt(position.substring(0, 1));// 职务0主任1处长2团队负责人3小组长4普通员工
+		int chu = Integer.parseInt(position.substring(2, 3));// 第三位表示处室
+		int process = 0;
+		if(zhi==1)//处长
+		{
+			process = 2;
+		}else if(zhi>1)
+		{
+			process = 1;
+		}
+		return process;
+	}
 	/**
 	 * 根据position查询考勤缺失编号
 	 * @param position

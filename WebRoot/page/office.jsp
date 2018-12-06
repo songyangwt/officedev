@@ -778,6 +778,67 @@ function frame(o)
 		document.getElementById("frame").src="<%=path%>/viewjbspycb.action?newnumber=${newnumber}";
 		//document.getElementById("daohang").innerHTML="加班申请->本人承办->已承办";
 	}
+	
+	
+	
+	//值班审批
+	else if(obj=="zbsp_br")//加班审批-本人发起
+	{
+		if(zhi=='0')
+		{
+			document.getElementById("frame").src="<%=path%>/viewzbspunder.action?newnumber=${newnumber}";
+		}
+		else
+		{
+			document.getElementById("frame").src="<%=path%>/showzbsppage.action?newnumber=${newnumber}";
+		}
+		
+		//document.getElementById("daohang").innerHTML="加班申请->发起申请->本人发起";
+	}
+	else if(obj=="zbsp_df")//外出公干-代发起
+	{
+		document.getElementById("frame").src="<%=path%>/showzbsppagedf.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="外出公干->查看申请->流转中";
+	}
+	else if(obj=="zbsp_lz")//加班审批-流转中
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbsp.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="加班申请->查看申请->流转中";
+	}
+	else if(obj=="zbsp_ybj")//加班审批-已办结
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbspybj.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="加班申请->查看申请->流转中";
+	}
+	else if(obj=="zbsp_db")//加班审批-待办事项
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbspunder.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="加班申请->本人承办->待办事宜";
+	}
+	else if(obj=="zbsp_all")//加班审批-查询所有
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbspall.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="加班申请->统计查询->明细查询";
+	}
+	else if(obj=="zbsp_grmx")//加班审批-个人调休明细
+	{
+		//document.getElementById("frame").src="<%=path%>/viewzbspsummary.action?newnumber=${newnumber}&year=${year}";
+		document.getElementById("frame").src="<%=path%>/viewjpdall.action?newnumber=${newnumber}&grzx=gr";
+	}
+	else if(obj=="zbsp_alltd")//加班审批-查询所有团队明细
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbspall.action?newnumber=${newnumber}&zxtd=td";
+	}
+	else if(obj=="zbsp_zxmx")//加班审批-中心调休明细
+	{
+		//document.getElementById("frame").src="<%=path%>/viewzbspsummary.action?newnumber=${newnumber}&year=${year}&zxtd=td";
+		document.getElementById("frame").src="<%=path%>/viewjpdall.action?newnumber=${newnumber}&grzx=zx";
+	}
+	else if(obj=="zbsp_ycb")//加班审批-已承办
+	{
+		document.getElementById("frame").src="<%=path%>/viewzbspycb.action?newnumber=${newnumber}";
+		//document.getElementById("daohang").innerHTML="加班申请->本人承办->已承办";
+	}
 	//考勤缺失
 	else if(obj=="kqqs_br")//考勤缺失-本人发起
 	{
@@ -1731,6 +1792,82 @@ function frame(o)
 		//document.getElementById("54").onclick=function(){frame('jbsp_zxmx');};
 		//document.getElementById("58").onclick=function(){frame('jbsp_zxmx');};
 	}
+	
+	else if(obj=="test_zbsp")//值班审批
+	{
+		if(zhi=='0')
+		{
+			document.getElementById("frame").src="<%=path%>/viewzbspunder.action?newnumber=${newnumber}";
+		}
+		else
+		{
+			document.getElementById("frame").src="<%=path%>/showzbsppage.action?newnumber=${newnumber}";
+		}
+		topmenu.style.display="inline-block";
+		if(zhi=='3'&&authoI!='I')//普通员工(除考勤管理员)不能代发起
+		{
+			document.getElementById("22").style.display="none";
+		}
+		else
+		{
+			document.getElementById("22").style.display="inline-block";
+		}
+		document.getElementById("21").style.display="inline-block";
+		//document.getElementById("22").style.display="none";
+		document.getElementById("23").style.display="none";
+		document.getElementById("24").style.display="none";
+		document.getElementById("31").style.display="inline-block";
+		document.getElementById("32").style.display="inline-block";
+		document.getElementById("41").style.display="inline-block";
+		document.getElementById("42").style.display="inline-block";
+		document.getElementById("51").style.display="inline-block";
+		document.getElementById("52").style.display="none";
+		if(zhi=='0'||zhi=='1'||authoH=='H'||authoI=='I'||authoJ=='J')
+		{
+		   document.getElementById("53").style.display="inline-block";
+		   document.getElementById("57").style.display="none";
+		  document.getElementById("54").style.display="none";
+		  document.getElementById("58").style.display="none";
+		   //document.getElementById("54").style.display="inline-block";
+		}
+		else
+		{
+		   document.getElementById("53").style.display="none";
+		   document.getElementById("54").style.display="none";
+		}
+		if(zhi=='2'||zhi=='4')
+		{
+		  document.getElementById("57").style.display="inline-block";
+		  document.getElementById("53").style.display="none";
+		  document.getElementById("54").style.display="none";
+		  document.getElementById("58").style.display="none";
+		  //document.getElementById("58").style.display="inline-block";
+		}
+		else
+		{
+		   document.getElementById("57").style.display="none";
+		   document.getElementById("58").style.display="none";
+		}
+		//document.getElementById("53").style.display="inline-block";
+		//document.getElementById("54").style.display="none";
+		document.getElementById("55").style.display="none";
+		document.getElementById("56").style.display="none";
+	
+		document.getElementById("21").onclick=function(){frame('zbsp_br');}; 
+		document.getElementById("22").onclick=function(){frame('zbsp_df');}; 
+		document.getElementById("31").onclick=function(){frame('zbsp_lz');};
+		document.getElementById("32").onclick=function(){frame('zbsp_ybj');};
+		document.getElementById("41").onclick=function(){frame('zbsp_db');};
+		document.getElementById("42").onclick=function(){frame('zbsp_ycb');};
+		document.getElementById("51").onclick=function(){frame('zbsp_all');};
+		//document.getElementById("52").innerHTML='个人调休明细';
+		//document.getElementById("54").innerHTML='中心调休明细';
+		//document.getElementById("52").onclick=function(){frame('zbsp_grmx');};
+		document.getElementById("53").onclick=function(){frame('zbsp_alltd');};
+		document.getElementById("57").onclick=function(){frame('zbsp_alltd');};
+		//document.getElementById("54").onclick=function(){frame('zbsp_zxmx');};
+		//document.getElementById("58").onclick=function(){frame('zbsp_zxmx');};
+	}
 	else if(obj=="test_kqqs")//考勤缺失
 	{
 		if(zhi=='0')
@@ -2438,6 +2575,7 @@ $(document).ready(function(){
 									<li class="cc"  onclick="frame('test_leave')">请假申请</li>
 									<li class="cc"  onclick="frame('test_wcgg')">外出公干</li>
 									<li class="cc"  onclick="frame('test_jbsp')">加班申请</li>
+									<li class="cc"  onclick="frame('test_zbsp')">值班申请</li>
 									<li class="cc"  onclick="frame('test_kqqs')">考勤缺失</li>
 								</ul>
 							</li>

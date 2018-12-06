@@ -27,4 +27,5 @@
 	<include file="office/zcgl/action/zcgl_struts.xml"></include>
 	<include file="office/uass/action/uass_struts.xml"></include>
 	<include file="office/tempxx/action/tempxx_struts.xml"></include>
+	<include file="office/zbsp/action/zbsp_struts.xml"></include>
 </struts>

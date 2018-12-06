@@ -132,13 +132,14 @@ return false;
 	  	<c:if test="${lastyear.chanleave!=0.0}">产假：${lastyear.chanleave }天<br></c:if>
 		<c:if test="${lastyear.shangleave!=0.0}">工伤假：${lastyear.shangleave }天<br></c:if>
 	  	<c:if test="${lastyear.hunleave!=0.0}">婚假：${lastyear.hunleave }天<br></c:if>
-		<c:if test="${lastyear.workleave!=0.0}">加班调休：${lastyear.workleave }天<br></c:if>
+		<c:if test="${lastyear.workleave!=0.0}">加班补休：${lastyear.workleave }天<br></c:if>
       	<c:if test="${lastyear.sangleave!=0.0}">丧假：${lastyear.sangleave }天<br></c:if>
 		<c:if test="${lastyear.tanfmleave!=0.0}">探亲假（父母）：${lastyear.tanfmleave }天<br></c:if>
       	<c:if test="${lastyear.gongleave!=0.0}">公假：${lastyear.gongleave }天<br></c:if>
 		<c:if test="${lastyear.tanpoleave!=0.0}">探亲假（配偶）：${lastyear.tanpoleave }天<br></c:if>
       	<c:if test="${lastyear.shileave!=0.0}">事假：${lastyear.shileave }天<br></c:if>
-      	<c:if test="${lastyear.qitaleave!=0.0}">产检：${lastyear.qitaleave }天</c:if>
+      	<c:if test="${lastyear.qitaleave!=0.0}">产检：${lastyear.qitaleave }天<br></c:if>
+      	<c:if test="${lastyear.zhibanleave!=0.0}">值班调休：${lastyear.zhibanleave }天<br></c:if>
 	  </td>
       <td><div align="center">本年度请假情况</div></td>
       <td colspan="3">
@@ -147,13 +148,14 @@ return false;
 	  	<c:if test="${thisyear.chanleave!=0.0}">产假：${thisyear.chanleave }天<br></c:if>
 		<c:if test="${thisyear.shangleave!=0.0}">工伤假：${thisyear.shangleave }天<br></c:if>
 	  	<c:if test="${thisyear.hunleave!=0.0}">婚假：${thisyear.hunleave }天<br></c:if>
-		<c:if test="${thisyear.workleave!=0.0}">加班调休：${thisyear.workleave }天<br></c:if>
+		<c:if test="${thisyear.workleave!=0.0}">加班补休：${thisyear.workleave }天<br></c:if>
       	<c:if test="${thisyear.sangleave!=0.0}">丧假：${thisyear.sangleave }天<br></c:if>
 		<c:if test="${thisyear.tanfmleave!=0.0}">探亲假（父母）：${thisyear.tanfmleave }天<br></c:if>
       	<c:if test="${thisyear.gongleave!=0.0}">公假：${thisyear.gongleave }天<br></c:if>
 		<c:if test="${thisyear.tanpoleave!=0.0}">探亲假（配偶）：${thisyear.tanpoleave }天<br></c:if>
       	<c:if test="${thisyear.shileave!=0.0}">事假：${thisyear.shileave }天<br></c:if>
-      	<c:if test="${thisyear.qitaleave!=0.0}">产检：${thisyear.qitaleave }天</c:if>
+      	<c:if test="${thisyear.qitaleave!=0.0}">产检：${thisyear.qitaleave }天<br></c:if>
+      	<c:if test="${thisyear.zhibanleave!=0.0}">值班调休：${thisyear.zhibanleave }天<br></c:if>
       </td>
       </tr>
     <tr>

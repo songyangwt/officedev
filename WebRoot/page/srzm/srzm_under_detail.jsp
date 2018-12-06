@@ -219,7 +219,7 @@ table td{
     				选择审批人
     			</td>
     			<td colspan="5">
-    				<select id="xuanze" name="xuanze">
+    				<select id="xuanze" name="xuanze" id="xuanze">
         				<option>请选择下一级审批人</option>
         					<c:forEach items="${listui}" var="user" varStatus="status">
         						<option value="${user.newnumber}">${user.username}</option>
@@ -229,7 +229,7 @@ table td{
     		</tr>
     		</c:if>
     		<c:if test="${youshenpi!=1}"> 
-    			<input type="hidden" name="xuanze" value=""/>
+    			<input type="hidden" name="xuanze" id="xuanze" value=""/>
     		</c:if>
     		<tr>
     			<td>

@@ -167,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				选择审批人
     			</td>
     			<td colspan="5">
-    				<select name="xuanze">
+    				<select name="xuanze" id="xuanze">
         				<option>请选择下一级审批人</option>
         					<c:forEach items="${listui}" var="user" varStatus="status">
         						<option value="${user.newnumber}">${user.username}</option>
@@ -177,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     		</c:if>
     		<c:if test="${youshenpi!=1}"> 
-    			<input type="hidden" name="xuanze" value=""/>
+    			<input type="hidden" name="xuanze" id="xuanze" value=""/>
     		</c:if>
     		<tr>
     			<td>

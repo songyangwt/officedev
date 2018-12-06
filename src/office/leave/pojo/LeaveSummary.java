@@ -16,8 +16,8 @@ public class LeaveSummary extends AbstractLeaveSummary implements java.io.Serial
 
     
     /** full constructor */
-    public LeaveSummary(Integer year, String name, String newnumber, String position, Double yearall, Double yearleave, Double workrest, Double workleave, Double bingleave, Double shileave, Double hunleave, Double chanleave, Double tanpoleave, Double tanfmleave, Double sangleave, Double shangleave, Double gongleave, Double qitaleave, Double peikaoleave, Double buruleave, String remark) {
-        super(year, name, newnumber, position, yearall, yearleave, workrest, workleave, bingleave, shileave, hunleave, chanleave, tanpoleave, tanfmleave, sangleave, shangleave, gongleave, qitaleave, peikaoleave, buruleave, remark);        
+    public LeaveSummary(Integer year, String name, String newnumber, String position, Double yearall, Double yearleave, Double workrest, Double workleave, Double bingleave, Double shileave, Double hunleave, Double chanleave, Double tanpoleave, Double tanfmleave, Double sangleave, Double shangleave, Double gongleave, Double qitaleave, Double peikaoleave, Double buruleave, String remark, Double zhibanrest, Double zhibanleave) {
+        super(year, name, newnumber, position, yearall, yearleave, workrest, workleave, bingleave, shileave, hunleave, chanleave, tanpoleave, tanfmleave, sangleave, shangleave, gongleave, qitaleave, peikaoleave, buruleave, remark, zhibanrest, zhibanleave);        
     }
    
 }

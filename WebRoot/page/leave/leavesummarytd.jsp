@@ -122,11 +122,11 @@ $('#chutuan').attr('value',x[2].value);
 								bordercolor=none><div align="center">
 									<p>年度</p>
 								</div></td>
-							<td  width="50px"  align="center" valign="middle" nowrap
+							<td  width="30px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>姓名</p>
 								</div></td>
-							<td  width="78px"  align="center" valign="middle" nowrap
+							<td  width="30px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>处室团队</p>
 								</div></td>		
@@ -140,11 +140,11 @@ $('#chutuan').attr('value',x[2].value);
 								</div></td>	
 							<td  width="60px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>加班调休剩余</p>
+									<p>加班补休剩余</p>
 								</div></td>
 							<td  width="60px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
-									<p>加班调休已请</p>
+									<p>加班补休已请</p>
 								</div></td>
 							<td  width="60px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
@@ -193,6 +193,10 @@ $('#chutuan').attr('value',x[2].value);
 							<td  width="60px"  align="center" valign="middle" nowrap
 								bordercolor=none><div align="center">
 									<p>哺乳假已请天数</p>
+								</div></td>		
+							<td  width="60px"  align="center" valign="middle" nowrap
+								bordercolor=none><div align="center">
+									<p>值班调休已请天数</p>
 								</div></td>												
 						</tr>
 							<c:forEach items="${list}" var="leave" varStatus="status">
@@ -237,11 +241,13 @@ $('#chutuan').attr('value',x[2].value);
 								<td height="25" align="center" valign="middle" nowrap><div
 										align="center">${leave.peikaoleave}</div></td>
 								<td height="25" align="center" valign="middle" nowrap><div
-										align="center">${leave.buruleave}</div></td>						
+										align="center">${leave.buruleave}</div></td>
+								<td height="25" align="center" valign="middle" nowrap><div
+										align="center">${leave.zhibanleave}</div></td>							
 							</tr>
 							</c:forEach>
 							<tr class="表格表头背景">
-							<td colspan="20">
+							<td colspan="21">
 								<div align="center">
 								<a	href="<%=path%>/viewsummary.action?newnumber=${newnumber}&zhuan=1&year=${year}&zxtd=td&chutuan=${chutuan}&name=${name}&keyword=${keyword}&currentPage=${previousPage}"
 							style="padding-right: 30px;color: #104E8B">上一页</a> 

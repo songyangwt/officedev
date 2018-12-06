@@ -129,10 +129,11 @@ function jisuan() {
 	var begindate= document.getElementById("begindate").value;
 	var enddate= document.getElementById("enddate").value;
 	var jbsprestdays = document.getElementById("jbsprestdays").value;
+	var zbsprestdays = document.getElementById("zbsprestdays").value;
 	var types=document.getElementsByName("type");
 	var type="999";	
 		
-	for (var i=0;i<14;i++){			
+	for (var i=0;i<15;i++){			
 		if (types[i].checked==true){
 			
 			type=types[i].value;
@@ -153,9 +154,9 @@ function jisuan() {
 	
 	
     inoutdate(begindate,enddate,type,halfday1,halfday2);
-    if((type==1||type==3)&&jbsprestdays>0)//病假或事假
+    if((type==1||type==3)&&(jbsprestdays>0||zbsprestdays>0))//病假或事假
     {
-		alert("有未休完的加班调休，按中心规定，应休完加班调休后再请病事假！");
+		alert("有未休完的加班补休或值班调休，按中心规定，应休完后再请病事假！");
     }
 }
 
@@ -233,6 +234,7 @@ function tijiao() {
 	var begindate=begindate.replace(/-/g,"/");
 	var begindate=new Date(begindate);
 	var jbsprestdays = document.getElementById("jbsprestdays").value;
+	var zbsprestdays = document.getElementById("zbsprestdays").value;
 	var yearrest=document.getElementById("yearrest").value;
 	var yearcishu=document.getElementById("yearcishu").value;
 	var enddate= document.getElementById("enddate").value;
@@ -265,7 +267,7 @@ function tijiao() {
 		document.getElementById("zhiwu").focus();
 		ii=ii+1;return;
 	}
-	for (var i=0;i<14;i++){
+	for (var i=0;i<15;i++){
 		if (types[i].checked==true){type=types[i].value;}
 	}
 	if((authoI!="I")&&((begindate-nowdate)>5270400000))
@@ -420,7 +422,15 @@ if (type==10){
   //加班调休
 if (type==11){
 	if(Number(sumdate.value)>Number(jbsprestdays)){
-		alert("加班调休可休天数:"+jbsprestdays+"小于拟请假天数："+sumdate.value);
+		alert("加班补休可休天数:"+jbsprestdays+"小于拟请假天数："+sumdate.value);
+		document.getElementById("sumdate").value="";
+		ii=ii+1;return;
+	}
+}
+
+if (type==15){
+	if(Number(sumdate.value)>Number(zbsprestdays)){
+		alert("值班调休可休天数:"+zbsprestdays+"小于拟请假天数："+sumdate.value);
 		document.getElementById("sumdate").value="";
 		ii=ii+1;return;
 	}
@@ -493,12 +503,22 @@ function trim(str){ //删除左右两端的空格
 </script>
 <script type="text/javascript">
 function change1(){
-
+//alert("111");
 var yesorno="";
 var time=new Date().getTime();
 var name=document.getElementById('name').value;
 var begindate=document.getElementById('begindate').value;
 var newnumber=document.getElementById('newnumber').value;
+var types= document.getElementsByName('type');
+var type=0;
+for(var i=0;Number(i)<types.length;i++)
+{
+	if(types[i].checked==true)
+	{
+       type=types[i].value;
+       break;		
+	}
+}
 name = encodeURI(name); 
 name = encodeURI(name); 
 var xmlhttp;
@@ -532,16 +552,19 @@ var xmlhttp;
 					document.getElementById("thisyear").innerHTML=arr[9];
 					document.getElementById("xianshi").innerHTML="本年剩余可休天数："+arr[11]+"天，剩余可休次数："+arr[16]+"次）";
 					document.getElementById("xianshi2").innerHTML="（剩余可休天数："+arr[12]+"）";
+				    document.getElementById("xianshi3").innerHTML="（剩余可休天数："+arr[17]+"）";
 					document.getElementById("yearrest").value=arr[11];
 					document.getElementById("jbsprestdays").value=arr[12];
 					document.getElementById("chanrestdays").value=arr[13];
 					document.getElementById("tanporestdays").value=arr[14];
 					document.getElementById("tanfmrestdays").value=arr[15];
 					document.getElementById("yearcishu").value=arr[16];
+					document.getElementById("zbsprestdays").value=arr[17];
 					bossname(arr[10]);
 		}				
-	} 
-	xmlhttp.open("GET","leave_self_dai.action?name="+name+"&newnumber="+newnumber+"&begindate="+begindate+"&nowtime="+time,true);
+	}
+	//xmlhttp.open("GET","leave_self_dai.action?name="+name+"&newnumber="+newnumber+"&begindate="+begindate+"&nowtime="+time,true); 
+	xmlhttp.open("GET","leave_self_dai.action?name="+name+"&newnumber="+newnumber+"&begindate="+begindate+"&nowtime="+time+"&type="+type,true);
 	xmlhttp.send();
 }
 </script>
@@ -702,29 +725,31 @@ for (var i=0;i<arry.length;i++){
     <tr>
       <td><div align="center" >拟请假<br/>类&nbsp;&nbsp;&nbsp;&nbsp;别</div></td>
       <td colspan="7" style="padding-left:10px">
-      	<label><input name="type" type="radio" value="1" onclick="jisuan();alert('1.向下一级审批人出示县级或二级乙等以上医院开具的病休证明、病历原件及复印件  2.请在备注中填写病假情况说明')"/>病假&nbsp;&nbsp;<span class="tip">（请向下一级审批人出示县级或二级乙等以上医院开具的病休证明、病历原件及复印件）</span></label>
+      	<label><input name="type" type="radio" value="1" onclick="jisuan();alert('1.向下一级审批人出示县级或二级乙等以上医院开具的病休证明、病历原件及复印件  2.请在备注中填写病假情况说明');change1();"/>病假&nbsp;&nbsp;<span class="tip">（请向下一级审批人出示县级或二级乙等以上医院开具的病休证明、病历原件及复印件）</span></label>
       	<br/>
-      	<label><input name="type" type="radio" value="13" onclick="jisuan();"/>陪考假<span class="tip">（请向下一级审批人出示子女中、高考准考证复印件，陪考假3天，其中考前1天，考试2天）</span></label>
+      	<label><input name="type" type="radio" value="13" onclick="jisuan();change1();"/>陪考假<span class="tip">（请向下一级审批人出示子女中、高考准考证复印件，陪考假3天，其中考前1天，考试2天）</span></label>
       	<br/>
       	<label><input name="type" type="radio" value="2" onclick="jisuan();change1();"/>年休假<span class="tip">（休假次数不应超过3次，</span> </label>
       	<span class="tip" id="xianshi">本年剩余可休天数：${yearrest }天；剩余可休次数：${yearcishu}次）</span>    
       	<br/>
-      	<label><input name="type" type="radio" value="3" onclick="jisuan();alert('请在备注栏填写请假事由！')"/>事假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       	<label><input name="type" type="radio" value="14" onclick="jisuan();"/>哺乳假</label><span class="tip">（女员工产后上班第一天到小孩满一周岁可申请哺乳假）</span>
+      	<label><input name="type" type="radio" value="3" onclick="jisuan();alert('请在备注栏填写请假事由！');change1();"/>事假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       	<label><input name="type" type="radio" value="14" onclick="jisuan();change1();"/>哺乳假</label><span class="tip">（女员工产后上班第一天到小孩满一周岁可申请哺乳假）</span>
       	<br/>
-      	<label><input name="type" type="radio" value="4" onclick="jisuan();alert('1.向下一级审批人和考勤管理员出示结婚证  2.备注请填写结婚日期  3.领证一年内可休婚假')"/>婚假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="10" onclick="jisuan();alert('1.在工作时间内依法参加选举等社会活动可以请公假 2.请在备注栏填写请假事由')"/>公假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="11" onclick="jisuan();change1();"/>加班调休</label>&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="4" onclick="jisuan();alert('1.向下一级审批人和考勤管理员出示结婚证  2.备注请填写结婚日期  3.领证一年内可休婚假');change1();"/>婚假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="10" onclick="jisuan();alert('1.在工作时间内依法参加选举等社会活动可以请公假 2.请在备注栏填写请假事由');change1();"/>公假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="11" onclick="jisuan();change1();"/>加班补休</label>&nbsp;&nbsp;
       	<span class="tip" id="xianshi2">（剩余可休天数：${jbsprestdays}）</span>
       	<br/>
-      	<label><input name="type" type="radio" value="9" onclick="jisuan();"/>工伤假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="12" onclick="jisuan();"/>产检</label><input size="8" type="hidden" id="qita" name="qita" value="产检"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="5" onclick="jisuan();"/><input type="hidden" value="${chanrestdays}" id="chanrestdays" name="chanrestdays"/>产假（或陪护假）</label>
+      	<label><input name="type" type="radio" value="9" onclick="jisuan();change1();"/>工伤假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="12" onclick="jisuan();change1();"/>产检</label><input size="8" type="hidden" id="qita" name="qita" value="产检"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="5" onclick="jisuan();change1();"/><input type="hidden" value="${chanrestdays}" id="chanrestdays" name="chanrestdays"/>产假（或陪护假）</label>
       	<br/>
-      	<label><input name="type" type="radio" value="8" onclick="jisuan();alert('仅员工父母、配偶、子女或配偶父母去世可以请丧假')"/>丧假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="7" onclick="jisuan();alert('同父母分居两地，乘坐火车、汽车不能在周末休息日团聚可以请探亲假')"/><input type="hidden" value="${tanfmrestdays}" id="tanfmrestdays" name="tanfmrestdays"/>探亲假（父母）</label>&nbsp;&nbsp;&nbsp;&nbsp;
-      	<label><input name="type" type="radio" value="6" onclick="gjisuan();alert('同配偶分居两地，乘坐火车、汽车不能在周末休息日团聚可以请探亲假')"/><input type="hidden" value="${tanporestdays}" id="tanporestdays" name="tanporestdays"/>探亲假（配偶）</label>
+      	<label><input name="type" type="radio" value="8" onclick="jisuan();alert('仅员工父母、配偶、子女或配偶父母去世可以请丧假');change1();"/>丧假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="7" onclick="jisuan();alert('同父母分居两地，乘坐火车、汽车不能在周末休息日团聚可以请探亲假');change1();"/><input type="hidden" value="${tanfmrestdays}" id="tanfmrestdays" name="tanfmrestdays"/>探亲假（父母）</label>&nbsp;&nbsp;&nbsp;&nbsp;
+      	<label><input name="type" type="radio" value="6" onclick="gjisuan();alert('同配偶分居两地，乘坐火车、汽车不能在周末休息日团聚可以请探亲假');change1();"/><input type="hidden" value="${tanporestdays}" id="tanporestdays" name="tanporestdays"/>探亲假（配偶）</label>
       	<br/>
+      	<label><input name="type" type="radio" value="15" onclick="jisuan();change1();"/>值班调休</label>&nbsp;&nbsp;
+      	<span class="tip" id="xianshi3">（剩余可休天数：${zbsprestdays}）</span>
       <!--  
        <label><input name="type" type="radio" value="3" onclick="getRadio('3');jisuan();alert('请在备注栏填写请假事由！')"/>事假</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       	<label><input name="type" type="radio" value="1" onclick="getRadio('1');jisuan();alert('1.向下一级审批人出示医院纸质证明  2.需向考勤管理员提交医院纸质证明归档 3.请在备注中填写病假情况说明')"/>病假 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -815,9 +840,10 @@ for (var i=0;i<arry.length;i++){
         <td colspan="4"></td>
         <td>
         	<input type="hidden" name="dai" value="1"/>
-        	<input type="hidden" name="username" value="${username}"/>
+        	<input type="hidden" id="username" name="username" value="${username}"/>
         	<input type="hidden" id="wy" name="workyears" value="${workyears}"/>
         	<input type="hidden" id="jbsprestdays" value="${jbsprestdays}"/>
+        	<input type="hidden" id="zbsprestdays" value="${zbsprestdays}"/>
         	<input type="hidden" id="yearrest" value="${yearrest}"/>
         	<input type="hidden" id="yearcishu" value="${yearcishu}"/>
         	<input type="hidden" id="autho" name="autho" value="${autho}"/>

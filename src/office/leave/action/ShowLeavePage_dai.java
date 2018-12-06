@@ -14,6 +14,7 @@ import office.userinfo.pojo.UserInfo;
 import office.util.DateUtil;
 import office.util.UserUtil;
 import office.util.Util;
+import office.zbsp.dao.TZbspPageDiDAO;
 /**
  * 请假页面展示
  * 从数据库中读取请假审批表中的返显要素，并在页面显示
@@ -41,9 +42,11 @@ public class ShowLeavePage_dai {
 	private String message;
 	private int yearcishu;
 	private double jbsprestdays;
+	private double zbsprestdays;
 	private double chanrestdays;
 	private double tanfmrestdays;
 	private double tanporestdays;
+	private int type;
 	//当前日期
 	private String nowdate;
 	//上年度休假情况
@@ -51,6 +54,19 @@ public class ShowLeavePage_dai {
 	//本年度休假情况
 	private LeaveSummary thisyear;
 	
+	
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public double getZbsprestdays() {
+		return zbsprestdays;
+	}
+	public void setZbsprestdays(double zbsprestdays) {
+		this.zbsprestdays = zbsprestdays;
+	}
 	public String getNewnumber() {
 		return newnumber;
 	}
@@ -209,13 +225,14 @@ public class ShowLeavePage_dai {
 		String result = "success";
 		UserInfoDAO uidao = new UserInfoDAO();
 		JbspPageDiDAO jpddao = new JbspPageDiDAO();
+		TZbspPageDiDAO zpddao = new TZbspPageDiDAO();
 		LeavePageDAO lpdao = new LeavePageDAO();
 		LeaveSummaryDAO lsdao = new LeaveSummaryDAO();
 		DateUtil du = new DateUtil();
 		System.out.println("newnumber+"+newnumber);
 		Session session = HibernateSessionFactory.getSession();
  	    Transaction trans=session.beginTransaction();
-		name = java.net.URLDecoder.decode(name,"UTF-8"); 
+		name = java.net.URLDecoder.decode(name,"UTF-8");
 		UserInfo ui = uidao.findByName(name);
 		UserInfo uifq = uidao.findByNewNumber(newnumber);
 		if(begindate==null||begindate.length()<8)
@@ -238,15 +255,18 @@ public class ShowLeavePage_dai {
 		    {
 		    	yearcishu = lpdao.findYearShengyuCishu(newnumbersq,year);
 		    	double yeardays = lpdao.findSumByApplicant(newnumbersq, 169, year,2);//当年流转中年假天数
-		    	double jbdays = lpdao.findSumByApplicant(newnumbersq, 169, year,11);//当年流转中加班调休天数
+		    	double jbdays = lpdao.findSumByApplicant(newnumbersq, 169, year,11);//当年流转中加班补休天数
+		    	double zbdays = lpdao.findSumByApplicant(newnumbersq, 169, year,15);//当年流转中值班调休天数
 		    	LeaveSummary lsthisyear = lsdao.findByYearAndNewnumber(year,newnumbersq);
 		    	LeaveSummary lslastyear = lsdao.findByYearAndNewnumber(year-1,newnumbersq);
 		    	double newjbrest = jpddao.findDaysByBegindateEnddateName(begindate, name);
+		    	double newzbrest = zpddao.findDaysByBegindateEnddateName(begindate, name);
 		    	//jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()+newjbrest-jbdays;;
 		    	if(lsthisyear!=null&&lslastyear!=null)
 		    	{
 		    		//jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()-jbdays;;
-		    		jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()+newjbrest-jbdays;;
+		    		jbsprestdays = lsthisyear.getWorkrest() + lslastyear.getWorkrest()+newjbrest-jbdays;
+		    		zbsprestdays = newzbrest-zbdays;
 		    	}
 		    	//newnumber = ui.getNewnumber();
 		    	sex = UserUtil.getSexFromIdentity(ui.getIdentity());
@@ -301,7 +321,7 @@ public class ShowLeavePage_dai {
 		    	
 		    }
 		    LeavePageDAO lpd=new LeavePageDAO();
-		    bossname=lpd.findboss(name);
+		    bossname=lpd.findboss(name,type);
 		}
 		else
 		{

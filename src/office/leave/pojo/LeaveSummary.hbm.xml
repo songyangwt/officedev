@@ -93,12 +93,12 @@
         </property>
         <property name="qitaleave" type="java.lang.Double">
             <column name="qitaleave" precision="22" scale="0">
-                <comment>产检</comment>
+                <comment>其他请假</comment>
             </column>
         </property>
         <property name="peikaoleave" type="java.lang.Double">
             <column name="peikaoleave" precision="22" scale="0">
-                <comment>陪考</comment>
+                <comment>陪考假</comment>
             </column>
         </property>
         <property name="buruleave" type="java.lang.Double">
@@ -109,6 +109,16 @@
         <property name="remark" type="java.lang.String">
             <column name="remark" length="32">
                 <comment>备注</comment>
+            </column>
+        </property>
+        <property name="zhibanrest" type="java.lang.Double">
+            <column name="zhibanrest" precision="22" scale="0">
+                <comment>值班调休剩余天数</comment>
+            </column>
+        </property>
+        <property name="zhibanleave" type="java.lang.Double">
+            <column name="zhibanleave" precision="22" scale="0">
+                <comment>已请值班调休天数</comment>
             </column>
         </property>
     </class>

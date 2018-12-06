@@ -98,6 +98,10 @@
 		<mapping resource="office/zcgl/pojo/AssertFen.hbm.xml" />
 		<mapping resource="office/zcgl/pojo/StorehouseData.hbm.xml" />
 		<mapping resource="office/zcgl/pojo/StorehouseTempt.hbm.xml" />
+		<mapping resource="office/zbsp/pojo/TZbspPage.hbm.xml" />
+		<mapping resource="office/zbsp/pojo/TZbspPageDi.hbm.xml" />
+		<mapping resource="office/zbsp/pojo/TZbspSummary.hbm.xml" />
+
 
 	</session-factory>
 

@@ -261,6 +261,20 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 											</c:otherwise>
 										</c:choose>	
 									</c:if>
+									
+									<c:if test="${wb.type1=='值班申请'}">
+										<c:choose>
+											<c:when test="${(newnumber==wb.initiator)&&(wb.status==0||wb.status==5)}">
+												<a href="<%=path%>/deletezbsppage.action?number=${wb.number}&newnumber=${newnumber}">撤销</a>&nbsp;&nbsp;
+												<a href="<%=path%>/viewzbspdetail.action?number=${wb.number}&newnumber=${newnumber}">查看详情</a>  
+											</c:when>
+											<c:otherwise>
+												<a href="<%=path%>/zbspunderdetail.action?number=${wb.number}">办理</a>
+											</c:otherwise>
+										</c:choose>	
+									</c:if>
+									
+									
 									<c:if test="${wb.type1=='考勤缺失'}">	
 										<c:choose>
 											<c:when test="${(newnumber==wb.initiator)&&(wb.status==0||wb.status==5)}">
