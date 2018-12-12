@@ -329,7 +329,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				alert("选择其他请填写下线事由");
 				return;
 			}
-		  else if(Number(days*6)<(Number(day*6)+Number(hour))
+		  else if(Number(days*6)<(Number(day*6)+Number(hour)))
 			{
 				alert("下线总时长超过下线时段最大时长");
 				return;
