@@ -546,6 +546,23 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 			                     </td>	
 			            </tr>
 			              </c:if>	
+			              
+			        <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■因私出国境一键审批 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->  
+			         
+			         <c:if test="${newnumber=='91362239'||newnumber=='20186393'}">	
+			          <tr>
+							 <td
+								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
+								colspan="12" align="center" bordercolor="#FFFFFF"><b>因私出国（境）审批</b>								
+							</td>
+						</tr>
+					 <tr>
+							<td
+								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
+								colspan="12" align="center" bordercolor="#FFFFFF"><b>共${yscjnum}条待审批事项 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=path%>/viewyscjallunder.action?newnumber=${newnumber}">批量审批</a></b>								
+							</td>
+						</tr>
+					</c:if>	
 		 		  <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 资产管理 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->  
 			      <c:if test="${(zhi=='0'||zhi=='1'||zhi=='2'||authoN=='N'||authoM=='M'||authoO=='O'||authoS=='S')&&(fn:length(listwb3)!=0)}">  
 			            <tr>

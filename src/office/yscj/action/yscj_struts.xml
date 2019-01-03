@@ -96,5 +96,11 @@
 		<action name="showyscjpagetjdf" class="office.yscj.action.ShowYscjPageTjDf">
 			<result name="success">/page/yscj/yscj_page_tijiao.jsp</result>
 		</action>
+		<action name="viewyscjallunder" class="office.yscj.action.ViewYscjAllUnder">
+			<result name="success">/page/yscj/yscj_all_under_list.jsp</result>
+		</action>
+		<action name="allshenpi" class="office.yscj.action.AllShenPi">
+			<result name="success">/page/yscj/under_success.jsp</result>
+		</action>
 	</package>
 </struts>    

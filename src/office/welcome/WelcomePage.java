@@ -74,7 +74,7 @@ public class WelcomePage {
     private List<AssetApply>listay;
     private List<AssetBorrow>listab;
     private List<AssetReturn>listar;
-
+    private int yscjnum ;
     private List<StorehouseIn>listsin;
     private List<StorehouseOut>listsout;
     private List<UassPt> listuspt;
@@ -88,6 +88,14 @@ public class WelcomePage {
     
     
     
+	public int getYscjnum() {
+		return yscjnum;
+	}
+
+	public void setYscjnum(int yscjnum) {
+		this.yscjnum = yscjnum;
+	}
+
 	public List<TZbspPage> getListzp() {
 		return listzp;
 	}
@@ -444,6 +452,7 @@ public class WelcomePage {
 			listts = session.createQuery(hql).list();
 			hql = "from TYscj as ty where (substr(ty.thisunder,1,8)='"+newnumber1+"' and ty.status !='"+4+"') or (substr(ty.initiator,1,8)='"+newnumber1+"' and ty.status in (0,5))order by ty.id desc";
 			listty = session.createQuery(hql).list();
+			yscjnum = listty.size();
 			hql = "from TMjgl as tm where (substr(tm.thisunder,1,8)='"+newnumber1+"' and tm.status !='"+4+"') or (substr(tm.initiator,1,8)='"+newnumber1+"' and tm.status in (0,5))order by tm.id desc";
 			listtm = session.createQuery(hql).list();
 			hql= "from AssetApply as ay where substr(ay.thisunder,1,8)='"+newnumber1+"' or (substr(ay.initiator,1,8)='"+newnumber1+"' and ay.status in (0,5)) order by ay.id desc";

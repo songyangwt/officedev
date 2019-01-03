@@ -98,23 +98,23 @@ public class GetProcessByPosition {
 		int zhi = Integer.parseInt(position.substring(0, 1));// 职务0主任1处长2团队负责人3小组长4普通员工
 		int chu = Integer.parseInt(position.substring(2, 3));// 第三位表示处室
 		int process = 0;
-		if((zhi==3||zhi==4)&&(chu>=2))//普通员工或组长
+		if((zhi==3||zhi==4)&&(chu!=1))//普通员工或组长
 		{
 			process = 1;
 		} 
-		else if(zhi==2)//非综合团队负责人
+		else if(zhi==2&&(chu!=1))//非综合团队负责人
 		{
 			process = 1;
 		} 
 		else if((zhi==1)&&(chu==1))//综合处负责人
 		{
-			process = 3;
+			process = 99;
 		} 
-		else if(chu==1&&zhi==3)//综合管理处
+		else if(chu==1&&(zhi==3||zhi==2||zhi==4))//综合管理处
 		{
 			process = 2;
 		}
-		else if(zhi==1)//处室负责人
+		else if(zhi==1&&(chu!=1))//处室负责人
 		{
 			process = 2;
 		}

@@ -62,6 +62,20 @@
 		<function-signature>java.lang.String statusToString( java.lang.Integer)</function-signature>
     </function>
     
+       <function>
+        <description>reasonToName</description>
+        <name>reasontoname</name>
+		<function-class>office.util.Util</function-class>
+		<function-signature>java.lang.String reasonToName( java.lang.Integer)</function-signature>
+    </function>
+    
+        <function>
+        <description>passporttypeToName</description>
+        <name>passporttypetoname</name>
+		<function-class>office.util.Util</function-class>
+		<function-signature>java.lang.String passporttypeToName( java.lang.Integer)</function-signature>
+    </function>
+    
     <function>
         <description>RestToString</description>
         <name>newresttostring</name>

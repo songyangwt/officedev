@@ -305,6 +305,47 @@ public class Util {
 		}
 		return result;
 	}
+	
+	public static String reasonToName(Integer input)
+	{
+		String result = "";
+		if(input==1)
+		{
+			result = "旅游";
+		}
+		else if(input==2)
+		{
+			result = "探亲";
+		}
+		else if(input==3)
+		{
+			result = "访友";
+		}
+		else
+		{
+			result = "其他";
+		}
+		return result;
+	}
+	
+	
+	public static String passporttypeToName(Integer input)
+	{
+		String result = "";
+		if(input==1)
+		{
+			result = "护照";
+		}
+		else if(input==2)
+		{
+			result = "港澳通行证";
+		}
+		else
+		{
+			result = "台湾通行证";
+		}
+		return result;
+	}
 	/**
 	 * 如果字符串数组中存在相同字符串
 	 * @param input
