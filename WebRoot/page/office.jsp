@@ -52,6 +52,7 @@ if (i<10)
 </script>
 <script type="text/javascript">
 
+
 function frame(o)
 {
 	var id = document.getElementById("id").value;
@@ -849,6 +850,8 @@ function frame(o)
 /////////////////////////////用于二级彩单使用/////////////////////////////////////////	
 	else if(obj=="test_leave")//请假审批
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewundertake.action?newnumber=${newnumber}";
@@ -858,7 +861,7 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/leave.action?newnumber=${newnumber}";
 		}
 		//topmenu菜单显示控制
-		topmenu.style.display="inline-block";
+		
 		document.getElementById("21").style.display="inline-block";
 		if(zhi=='3'&&authoI!='I'&&chu!='5')//普通员工(除考勤管理员)不能代发起
 		{
@@ -919,6 +922,8 @@ function frame(o)
 	}
 	else if(obj=="test_wcgg")//外出公干
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewwcggunder.action?newnumber=${newnumber}";
@@ -927,8 +932,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showwcggpage.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 		document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
 		document.getElementById("21").style.display="inline-block";
@@ -989,6 +992,8 @@ function frame(o)
 	}
 	else if(obj=="test_zzzm")//在职证明
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzzzmunder.action?newnumber=${newnumber}";
@@ -997,8 +1002,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showzzzmpage.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 	    document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
 		document.getElementById("21").style.display="inline-block";
@@ -1060,6 +1063,8 @@ function frame(o)
 	
 	else if(obj=="test_zcsl")//资产申领
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0'||zhi=='1'||authoP=='P'||authoM=='M')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzcapplyunder.action?newnumber=${newnumber}";
@@ -1068,8 +1073,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showzcapplypage.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 		document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
 		document.getElementById("21").style.display="inline-block";
@@ -1125,6 +1128,8 @@ function frame(o)
 	
   else if(obj=="test_zcjy")//资产借用
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0'||zhi=='1'||authoP=='P'||authoM=='M')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzcborrowunder.action?newnumber=${newnumber}";
@@ -1134,7 +1139,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showzcborrowpage.action?newnumber=${newnumber}";
 		}
 		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("22").style.display="none";
 	    document.getElementById("23").style.display="none";
@@ -1189,6 +1193,8 @@ function frame(o)
 	
 		else if(obj=="test_zcxj")//资产续借
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0'||zhi=='1'||authoP=='P'||authoM=='M')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzcandborrowunder.action?newnumber=${newnumber}";
@@ -1197,8 +1203,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/viewzcneedandborrow.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("22").style.display="none";
 	    document.getElementById("23").style.display="none";
@@ -1253,6 +1257,8 @@ function frame(o)
 	
 	else if(obj=="test_zcgh")//资产归还
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0'||zhi=='1'||authoP=='P'||authoM=='M')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzcreturnunder.action?newnumber=${newnumber}";
@@ -1261,8 +1267,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showzcreturnpage.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("22").style.display="none";
 	    document.getElementById("23").style.display="none";
@@ -1319,6 +1323,8 @@ function frame(o)
 	
 	else if(obj=="test_kfrk")//库房入库
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 	   if(chu=='1'&&authoN=='N')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzckfinunder.action?newnumber=${newnumber}";
@@ -1328,7 +1334,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showzckfinpage.action?newnumber=${newnumber}";
 		}
 		//document.getElementById("frame").src="<%=path%>/showzckfinpage.action?newnumber=${newnumber}";
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 		document.getElementById("22").style.display="none";
         document.getElementById("23").style.display="none";
@@ -1385,6 +1390,8 @@ function frame(o)
 	
 	else if(obj=="test_kfbf")//库房报废
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 	    if(chu=='1'&&authoN=='N')
 		{
 			document.getElementById("frame").src="<%=path%>/viewzckfoutunder.action?newnumber=${newnumber}";
@@ -1394,7 +1401,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showzckfoutpage.action?newnumber=${newnumber}";
 		}
 		//document.getElementById("frame").src="<%=path%>/showzckfoutpage.action?newnumber=${newnumber}";
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 		document.getElementById("22").style.display="none";
         document.getElementById("23").style.display="none";
@@ -1449,6 +1455,8 @@ function frame(o)
 	
 	else if(obj=="test_mjgl")//门禁管理
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewmjglunder.action?newnumber=${newnumber}";
@@ -1457,8 +1465,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showmjglpage.action?newnumber=${newnumber}";
 		}
-		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 		document.getElementById("22").style.display="none";
 	    document.getElementById("23").style.display="none";
@@ -1518,6 +1524,8 @@ function frame(o)
 	}
 	else if(obj=="test_srzm")//收入证明
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewsrzmunder.action?newnumber=${newnumber}";
@@ -1527,7 +1535,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showsrzmpage.action?newnumber=${newnumber}";
 		}
 		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
@@ -1586,6 +1593,8 @@ function frame(o)
 	}
 	else if(obj=="test_yscj")//因私出入境
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewyscjunder.action?newnumber=${newnumber}";
@@ -1595,7 +1604,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showyscjpage.action?newnumber=${newnumber}";
 		}
 		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
@@ -1658,6 +1666,8 @@ function frame(o)
 	}
 	else if(obj=="test_jbsp")//加班审批
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewjbspunder.action?newnumber=${newnumber}";
@@ -1666,7 +1676,6 @@ function frame(o)
 		{
 			document.getElementById("frame").src="<%=path%>/showjbsppage.action?newnumber=${newnumber}";
 		}
-		topmenu.style.display="inline-block";
 		if(zhi=='3'&&authoI!='I')//普通员工(除考勤管理员)不能代发起
 		{
 			document.getElementById("22").style.display="none";
@@ -1733,6 +1742,8 @@ function frame(o)
 	}
 	else if(obj=="test_kqqs")//考勤缺失
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='0')
 		{
 			document.getElementById("frame").src="<%=path%>/viewkqqsunder.action?newnumber=${newnumber}";
@@ -1742,7 +1753,6 @@ function frame(o)
 			document.getElementById("frame").src="<%=path%>/showkqqspage.action?newnumber=${newnumber}";
 		}
 		
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
@@ -1803,6 +1813,8 @@ function frame(o)
 	}
 	else if(obj=="ygxx_page")//因公下线
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		if(zhi=='2')
 		{
 			document.getElementById("frame").src="<%=path%>/showygxxpage.action?newnumber=${newnumber}";
@@ -1812,7 +1824,6 @@ function frame(o)
 			frame('ygxx_all');
 		}
 		//document.getElementById("frame").src="<%=path%>/showygxxpage.action?newnumber=${newnumber}";
-		topmenu.style.display="inline-block";
         document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
 		if(zhi=='2')
@@ -1890,8 +1901,9 @@ function frame(o)
 	}
 	else if(obj=="tbsq_page")//调班申请
 	{
-		document.getElementById("frame").src="<%=path%>/showtbsqpage.action?newnumber=${newnumber}";
+		topmenu.style.display="none";
 		topmenu.style.display="inline-block";
+		document.getElementById("frame").src="<%=path%>/showtbsqpage.action?newnumber=${newnumber}";
 		document.getElementById("21").style.display="inline-block";
 	    document.getElementById("23").style.display="none";
 		document.getElementById("24").style.display="none";
@@ -1955,7 +1967,7 @@ function frame(o)
 	else if(obj=="uass_pt_hn"||obj=="uass_pt_wb")//平台用户
 	{
 		//默认界面
-		
+		topmenu.style.display="none";
 		topmenu.style.display="inline-block";
 		//document.getElementById("21").style.display="inline-block";
 		if(obj=="uass_pt_hn")//行内
@@ -2022,9 +2034,10 @@ function frame(o)
 	}
 	else if(obj=="uass_cost_hn")//cost行内用户
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		//默认界面
 		document.getElementById("frame").src="<%=path%>/uschshowpage.action?newnumber=${newnumber}&brdf=br";
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 //		if((chu=='1'&&zhi=='3')||zhi=='2'||chu=='5')//普通员工(除考勤管理员)不能代发起
 //		{
@@ -2055,6 +2068,11 @@ function frame(o)
 		document.getElementById("41").onclick=function(){frame('usch_db');};
 		document.getElementById("51").onclick=function(){frame('usch_all');};
 	}
+	else if(obj=="uass_cost_hn_mng")//uassCOST代码维护
+	{
+		topmenu.style.display="none";
+		document.getElementById("frame").src="<%=path%>/uschCOSTmng.action";
+	}
 	else if(obj=="usch_br")//uassCOST行内用户本人发起
 	{
 		document.getElementById("frame").src="<%=path%>/uschshowpage.action?newnumber=${newnumber}&brdf=br";
@@ -2077,9 +2095,10 @@ function frame(o)
 	}
 	else if(obj=="uass_cost_wb")//cost外包用户
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		//默认界面
 		document.getElementById("frame").src="<%=path%>/uscwshowpage.action?newnumber=${newnumber}";
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 		document.getElementById("22").style.display="none";
 		document.getElementById("23").style.display="none";
@@ -2120,9 +2139,10 @@ function frame(o)
 	}
 	else if(obj=="uass_jh_hn"||obj=="uass_jh_wb")//稽核用户维护申请
 	{
+		topmenu.style.display="none";
+		topmenu.style.display="inline-block";
 		//默认界面
 		//document.getElementById("frame").src="<%=path%>/usjhshowpage.action?newnumber=${newnumber}";
-		topmenu.style.display="inline-block";
 		document.getElementById("21").style.display="inline-block";
 		document.getElementById("22").style.display="none";
 		if(obj=="uass_jh_hn")//行内
@@ -2569,6 +2589,9 @@ $(document).ready(function(){
 											<li class="cc" class="frame" onclick="frame('uass_cost_hn')">行方操作员</li>
 											<c:if test="${zhi=='0'||zhi=='1'||zhi=='2'||authoL=='L'||authoO=='o'}">
 											<li class="cc" class="frame" onclick="frame('uass_cost_wb')">外包操作员</li>
+											</c:if>
+											<c:if test="${authoO=='o'}">
+											<li class="cc" class="frame" onclick="frame('uass_cost_hn_mng')">COS_T代码维护</li>
 											</c:if>
 										</ul>
 									</li>
