@@ -21,6 +21,7 @@ public class LoginMain extends ActionSupport implements ServletResponseAware {
 	private int id;
 	private String username;
 	private String password;
+	private String newnumber;
 	private Session h_session;
     private Transaction trans;
     private String hql;
@@ -32,6 +33,16 @@ public class LoginMain extends ActionSupport implements ServletResponseAware {
     Timestamp d = new Timestamp(System.currentTimeMillis());
     
     
+	public String getNewnumber() {
+		return newnumber;
+	}
+
+
+	public void setNewnumber(String newnumber) {
+		this.newnumber = newnumber;
+	}
+
+
 	public int getIsneedalert() {
 		return isneedalert;
 	}
@@ -139,8 +150,7 @@ public class LoginMain extends ActionSupport implements ServletResponseAware {
      	  {
      		  UserInfo u=(UserInfo)(l.get(0));
      		  id=u.getId();
-     		  username = this.getUsername();
-     		  password = this.getPassword();
+     		  newnumber = u.getNewnumber();
      		  System.out.print("username:"+username);
      		  System.out.print("password:"+password);
      		  System.out.print("DBpwd:"+u.getPassword());
@@ -178,6 +188,7 @@ public class LoginMain extends ActionSupport implements ServletResponseAware {
      		  }
      		
      		  ActionContext.getContext().getSession().put("username",username);
+     		 ActionContext.getContext().getSession().put("newnumber",newnumber);
         	  //访问量统计
 //        	  HttpSession session=null;
 //        	  session.setAttribute("user", this.getUsername());

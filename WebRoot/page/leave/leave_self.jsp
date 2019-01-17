@@ -59,6 +59,7 @@ b{
 }
   </style>
   <script type="text/javascript">
+
 //计算请假天数
 function countsumdate() {
 
@@ -92,11 +93,21 @@ inoutdate(begindate,enddate);
 
 function showpaiban()
 {		
-	with(document.forms[0]) {
+	
+	 var begindate = document.getElementById("begindate").value;
+    var enddate = document.getElementById("enddate").value;
+     //var chutuan = document.getElementById("chutuan").value;
+	var name = document.getElementById("name").value;	
+	//alert("111");
+	
+	  window.open("<%=path%>/viewpwall.action?begindate="+begindate+"&enddate="+enddate+"&name="+name,"","height=700,width=950,top=100,left=300,scrollbars=yes,resizeable=yes");
+	
+	/*with(document.forms[0]) {
 		action='viewpwall.action?isdai=0';
 		method="post";
+		target="blank";
 		submit();
-	}
+	}*/
 }
 
 function checkdate1(){
@@ -155,8 +166,10 @@ jisuan();
 //	}
 //}
 
+
 function istip()
 {
+    
     var begindate = document.getElementById("begindate").value;
 	var enddate = document.getElementById("enddate").value;
 	var newnumber = document.getElementById("newnumber").value;
@@ -813,7 +826,7 @@ for (var i=0;i<arry.length;i++){
         <input type="radio" name="RadioGroup2" value="xw" id="RadioGroup2_1" onClick="jisuan()">下午 
      </div>
      <div style="float:left;padding-top:8px;width:140px"> 	
-       	 止，共<input size="4" readonly="readonly" type="text" name="sumdate"  id="sumdate" onpropertychange="istip()">天
+       	 止，共<input size="4" readonly="readonly" type="text" name="sumdate"  id="sumdate"  onpropertychange="istip();">天
      </div>
         </td>
       </tr>
@@ -879,7 +892,7 @@ for (var i=0;i<arry.length;i++){
       </tr>
     <tr>
       <td><div align="center">备注</div></td>
-      <td colspan="7"><input type="text" name="remark" style="width:400px"/><input id="showbt" style="width:100px;display:none" type="button" onclick="showpaiban()" value="查看排班计划表"/><br><span id = tip style="color:red"></span> </td>
+      <td colspan="7"><input type="text" name="remark" style="width:400px"/><input id="showbt" style="width:150px;" type="button" onclick="showpaiban()" value="查看排班计划表"/><br><span id = "tip" style="color:red"></span> </td>
       </tr>
      <tr>
      	<td><div align="center">审批人</div></td>

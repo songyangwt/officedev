@@ -76,11 +76,18 @@ b{
 
 function showpaiban()
 {		
-	with(document.forms[0]) {
+	    var begindate = document.getElementById("begindate").value;
+		var enddate = document.getElementById("enddate").value;
+		//var chutuan = document.getElementById("chutuan").value;
+		var name = document.getElementById("name").value;	
+		//window.location = "<%=path%>/exportsrzm.action?begindate="+begindate+"&enddate="+enddate+"&name="+name;
+	    window.open("<%=path%>/viewpwall.action?begindate="+begindate+"&enddate="+enddate+"&name="+name,"","height=700,width=950,top=100,left=300,scrollbars=yes,resizeable=yes");
+	/*with(document.forms[0]) {
 		action='viewpwall.action?isdai=1';
 		method="post";
+		target="blank";
 		submit();
-	}
+	}*/
 }
 
 function checkdate1(){
@@ -827,7 +834,7 @@ for (var i=0;i<arry.length;i++){
       </tr>
     <tr>
       <td><div align="center">备注</div></td>
-      <td colspan="7"><input type="text" name="remark" style="width:400px"/><input id="showbt" style="width:100px;display:none" type="button" onclick="showpaiban()" value="查看排班计划表"/><br><span id = tip style="color:red"></span></td>
+      <td colspan="7"><input type="text" name="remark" style="width:400px"/><input id="showbt" style="width:150px;display:none" type="button" onclick="showpaiban()" value="查看排班计划表"/><br><span id = "tip" style="color:red"></span></td>
       </tr>
      <tr>
       <td align="center">审批人</td>

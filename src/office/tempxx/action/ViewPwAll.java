@@ -158,7 +158,11 @@ public class ViewPwAll {
 		Transaction trans = session.beginTransaction();
 		try {
 			ui = uidao.findByNewNumber(newnumber);
-			position = ui.getPosition();
+			if(ui!=null)
+			{
+				position = ui.getPosition();
+			}
+			
 			hql = "from TPeoplework as tw where 1=1";
 			if(name!=null&&zhuan==1)
 			{

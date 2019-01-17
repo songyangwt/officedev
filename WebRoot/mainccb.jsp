@@ -13,6 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <META content="MSHTML 6.00.2900.5848" name=GENERATOR>
 <script language="javascript"> 
 var username="${username}";
+var newnumber="${newnumber}";
+
 </script> 
 
 </HEAD>

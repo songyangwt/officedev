@@ -142,12 +142,12 @@ function showpaiban()
 							    <input type="hidden" name="remark" value="${remark}"/>
 								<input type="hidden" name="RadioGroup1" value="${RadioGroup1}"/>
 								<input type="hidden" name="RadioGroup2" value="${RadioGroup2}"/>
-								<c:if test="${isdai==0}">
+								<!--<c:if test="${isdai==0}">
 								<input type="button" onclick="javascript:history.go(-1);" value="返   回" />
 								</c:if>
 								<c:if test="${isdai==1}">
 								<input type="button" onclick="back();" value="返   回" />
-								</c:if>
+								</c:if>-->
 								</div>
 								<br/>
 								</td>

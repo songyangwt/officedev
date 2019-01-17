@@ -42,6 +42,21 @@ function allshenpi()
 {
 	
     var message = "确认提交？";
+    var choose = document.getElementsByName("yscjchoose");
+    var flag = 0;
+    for(var i=0;Number(i)<choose.length;i++)
+    {
+    	if(choose[i].checked)
+    	{
+    		flag++;
+    	}
+    }
+    
+    if(flag==0)
+    {
+    	alert("请选择审批事项！");
+    	return;
+    }
 	if (window.confirm(message)) {
 		with(document.forms[0]) {
 		action='allshenpi.action';
@@ -50,7 +65,7 @@ function allshenpi()
 	        }
 	     }
 		
-	
+
 }
 
  </script>

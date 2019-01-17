@@ -1085,11 +1085,11 @@ public class LeavePageDAO extends BaseHibernateDAO  {
                 		hql2 = "from UserInfo where position like '1_1__'";// 条件查询HQL语句
                 	}
                 }
-                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("3")&&(type!=2&&type!=11&&type!=15))//业务处理人员
+                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("3"))//业务处理人员
                 {
                 	hql2 = "from UserInfo where position like '__"+chu+"_"+tuan+"' and authority like '%D%'";// 条件查询HQL语句
                 }
-                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("4")&&(type!=2&&type!=11&&type!=15))//业务处理人员组长
+                else if((chu.equals("2")||chu.equals("3")||chu.equals("6"))&&zhi.equals("4"))//业务处理人员组长
                 {
                 	hql2 = "from UserInfo where position like '__"+chu+"__' and authority like '%B%'";// 条件查询HQL语句
                 }

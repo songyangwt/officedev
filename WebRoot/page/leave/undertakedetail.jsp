@@ -315,7 +315,7 @@ function tijiao() {
     <tr>
       <td><div align="center">备&nbsp;&nbsp;&nbsp;&nbsp;注</div></td>
       <td colspan="7"><div align="center">${lp.remark }</div>
-      <span id = tip style="color:red" ><c:if test="${isshow==0}">计划内下线，不需经排班管理员环节 </c:if><c:if test="${isshow==1}">计划外下线&nbsp;&nbsp;&nbsp;&nbsp; <input style="width:100px" type="button" onclick="showpaiban()" value="查看排班计划表"/> </c:if><c:if test="${isshow>1}">计划外下线，一天以上请报主任同意。&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:100px" type="button" onclick="showpaiban()" value="查看排班计划表"/></c:if></span></td>
+      <span id = "tip" style="color:red" ><c:if test="${isshow==0}">计划内下线，不需经排班管理员环节 </c:if><c:if test="${isshow==1}">计划外下线&nbsp;&nbsp;&nbsp;&nbsp; <input style="width:100px" type="button" onclick="showpaiban()" value="查看排班计划表"/> </c:if><c:if test="${isshow>1}">计划外下线，一天以上请报主任同意。&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:100px" type="button" onclick="showpaiban()" value="查看排班计划表"/></c:if></span></td>
       </tr>
      <tr>
      <td align="center">审批人
