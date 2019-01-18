@@ -78,6 +78,8 @@ public class AllShenPi {
  	 			String proc = p.getProcess();//完整请假流程
  	 			String jindu = ty.getJindu();
  	 			String under = ty.getThisunder();//当前审批人
+ 	 		  	int jindulength = ty.getJindu().length();
+ 	 			String undersign = proc.substring(jindulength, jindulength+1);
  	 			ol.setItem("YSCJ");
  	 			ol.setName(ui.getUsername());
  	 			ol.setNewnumber(newnumber);
@@ -92,9 +94,13 @@ public class AllShenPi {
  	 			{
  	 				lpro.setAuthority("A");
  	 			}
- 	 			else
+ 	 			else if(newnumber.equals("20186393"))
  	 			{
  	 				lpro.setAuthority("H");
+ 	 			}
+ 	 			else
+ 	 			{
+ 	 				lpro.setAuthority("B");
  	 			}
  	 	
  	 			lpro.setRemark("批量审批");
@@ -167,6 +173,12 @@ public class AllShenPi {
  	 		 	    	}
  	 		 	    
  	 		 			tzdao.merge(tz);
+ 	 				}
+ 	 				else if (undersign.equals("B"))
+ 	 				{
+ 	 					ty.setThisunder("20186393");
+ 	 					ty.setJindu(ty.getJindu()+"B");
+ 	 					ty.setStatus(2);//流转中状态
  	 				}
  	 				else
  	 				{

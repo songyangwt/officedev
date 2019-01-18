@@ -549,7 +549,7 @@ $("tr.btbj:even").css({"background-color":"#bfd3fc","font-family": "黑体","fon
 			              
 			        <!--■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■因私出国境一键审批 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■-->  
 			         
-			         <c:if test="${newnumber=='91362239'||newnumber=='20186393'}">	
+			         <c:if test="${newnumber=='91362239'||newnumber=='20186393'||authoB=='B'}">	
 			          <tr>
 							 <td
 								style="color: #1778C2; padding-top: 15px; padding-bottom: 15px; border: 0px; font-size: 26px; font-family: '黑体';"
