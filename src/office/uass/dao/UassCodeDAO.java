@@ -5,6 +5,7 @@ import ccb.dao.BaseHibernateDAO;
 import java.util.List;
 
 import office.uass.pojo.UassCode;
+import office.uass.pojo.UassCodeBean;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
@@ -25,6 +26,7 @@ public class UassCodeDAO extends BaseHibernateDAO  {
 	     private static final Logger log = LoggerFactory.getLogger(UassCodeDAO.class);
 		//property constants
 	public static final String POOL = "pool";
+	public static final String PART = "part";
 	public static final String PAIXU = "paixu";
 	public static final String CODE = "code";
 	public static final String DETAIL = "detail";
@@ -103,6 +105,12 @@ public class UassCodeDAO extends BaseHibernateDAO  {
 		);
 	}
 	
+	public List findByPart(Object part
+	) {
+		return findByProperty(PART, part
+		);
+	}
+	
 	public List findByPaixu(Object paixu
 	) {
 		return findByProperty(PAIXU, paixu
@@ -169,7 +177,7 @@ public class UassCodeDAO extends BaseHibernateDAO  {
         }
     }
     
-	public UassCode findCodeByPaixuAndPool(int paixu,String pool) {
+    public UassCode findCodeByPaixuAndPool(int paixu,String pool) {
 		log.debug("finding all UassCode instances");
 		try {
 			String queryString = "from UassCode as uc where uc.paixu='"+paixu+"' and uc.pool='"+pool+"'";
@@ -183,6 +191,28 @@ public class UassCodeDAO extends BaseHibernateDAO  {
 	         {
 	        	return (UassCode) list.get(0);
 	         }
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	public UassCodeBean findCodeByPaixuAndPoolBean(int paixu,String pool) {
+		log.debug("finding all UassCode instances");
+		try {
+			UassCodeBean ucb = new UassCodeBean();
+			ucb.setPaixu(paixu);
+			ucb.setPool(pool);
+			String queryString = "from UassCode as uc where uc.paixu='"+paixu+"' and uc.pool='"+pool+"'";
+	         Query queryObject = getSession().createQuery(queryString);
+	         List<UassCode> list = queryObject.list();
+	         if(!list.isEmpty())
+	         {
+	        	 UassCode uc = list.get(0);
+	        	 ucb.setCode(uc.getCode());
+	        	 ucb.setDetail(uc.getDetail());
+	        	 ucb.setId(uc.getId());
+	         }
+	         return ucb;
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			throw re;
@@ -203,6 +233,37 @@ public class UassCodeDAO extends BaseHibernateDAO  {
 	         {
 	        	return (UassCode) list.get(0);
 	         }
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+	public List<UassCode> findAllByOrder() {
+		log.debug("finding all UassCode instances");
+		try {
+			String queryString = "from UassCode order by pool,part,paixu";
+	         Query queryObject = getSession().createQuery(queryString);
+			 return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	public UassCode findAllById(int id) {
+		log.debug("finding all UassCode instances");
+		try {
+			String queryString = "from UassCode where id='"+id+"'";
+	         Query queryObject = getSession().createQuery(queryString);
+			 List<UassCode> list = queryObject.list();
+			 if(list.isEmpty())
+			 {
+				 return null;
+			 }
+			 else
+			 {
+				return list.get(0); 
+			 }
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			throw re;

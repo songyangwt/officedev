@@ -148,7 +148,7 @@ b{
     		</tr>
     		</c:if>
     		<c:if test="${nextunder=='no'}">
-    			<input type="hidden" name="xuanze" value="you"/>
+    			<input type="hidden" id="xuanze" name="xuanze" value="you"/>
     		</c:if> 
     		<tr>
     			<td>

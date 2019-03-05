@@ -1,11 +1,5 @@
 package office.uass.action;
 
-import office.kqqs.dao.KqqsPageDAO;
-import office.kqqs.pojo.KqqsPage;
-import office.leave.dao.LeaveProcessDAO;
-import office.leave.pojo.LeaveProcess;
-import office.log.dao.OperateLogDAO;
-import office.log.pojo.OperateLog;
 import office.uass.dao.UassCostHnDAO;
 import office.uass.dao.UassCostWbDAO;
 import office.uass.dao.UassJiheDAO;
@@ -14,13 +8,8 @@ import office.uass.pojo.UassCostHn;
 import office.uass.pojo.UassCostWb;
 import office.uass.pojo.UassJihe;
 import office.uass.pojo.UassPt;
-import office.userinfo.dao.UserInfoDAO;
-import office.userinfo.pojo.UserInfo;
-import office.util.DateUtil;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import ccb.hibernate.HibernateSessionFactory;
 
 public class UassQueren {

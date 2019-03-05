@@ -543,7 +543,7 @@ public class ImportKqjl {
 		{
 			message = "导入失败，请确认文件名是否符合规范。";
 		}
-		processKqjlDailyPbtime(yearmonth);
+		//processKqjlDailyPbtime(yearmonth);
 		return "success";
 	}
 	/**
@@ -555,9 +555,9 @@ public class ImportKqjl {
 		String message = "";
 		String sql = "";
 		KqjlUploadDAO kudao = new KqjlUploadDAO();
-		KqjlDailyDAO kddao = new KqjlDailyDAO();
-		ScpbUploadDAO sudao = new ScpbUploadDAO();
-		YgpbUploadDAO yudao = new YgpbUploadDAO();
+//		KqjlDailyDAO kddao = new KqjlDailyDAO();
+//		ScpbUploadDAO sudao = new ScpbUploadDAO();
+//		YgpbUploadDAO yudao = new YgpbUploadDAO();
 		Session session = HibernateSessionFactory.getSession();
     	Transaction trans=session.beginTransaction();
     	try {
@@ -733,7 +733,6 @@ public class ImportKqjl {
 		Session session = HibernateSessionFactory.getSession();
     	Transaction trans=session.beginTransaction();
     	try {
-    		
     		List<KqjlImport> listki = kidao.findAll();
     		date = listki.get(0).getDate();
     		//yearmonth = date.substring(0, 6);
@@ -750,11 +749,11 @@ public class ImportKqjl {
     		List<UserInfo> listuisc = uidao.findAllForPb(yearmonth);//查询所有打考勤人员(排班人员)
     		//List<UserInfo> listuisc = uidao.findAllByNameList("黄梦芊");
     		List<UserInfo> listuixy = uidao.findAllForYgxy();//查询所有打考勤人员(员工响应)
-    		List<UserInfo> listuixmz = uidao.findAllForXMZ();//查询所有打考勤人员(项目组)
+    		//List<UserInfo> listuixmz = uidao.findAllForXMZ();//查询所有打考勤人员(项目组)
     		List<UserInfo> listuiqita = uidao.findAllDaKaYuanGong();//查询所有打考勤人员（其他人员）
     		listuiqita.removeAll(listuisc);
     		listuiqita.removeAll(listuixy);
-    		listuiqita.removeAll(listuixmz);
+    		//listuiqita.removeAll(listuixmz);//项目组人员看做其他人员
     		for(int j=0;j<listmc.size();j++)
 			{
     			for(int i=0;i<listuisc.size();i++)//排班人员
@@ -780,17 +779,17 @@ public class ImportKqjl {
     				}
         		}
 			}
-    		for(int j=0;j<listuixmz.size();j++)//循环所有项目组的人
-			{
-    			UserInfo ui = listuixmz.get(j);
-    			for(int i=0;i<listmcwork.size();i++)//循环所有工作日
-				{
-					MyCalendar mc = listmcwork.get(i);
-					System.out.println(mc.getDate()+ui.getUsername());
-					KqjlDaily kd = ikm.methoForXMZ(mc,ui);
-					kddao.merge(kd);
-				}
-			}
+//    		for(int j=0;j<listuixmz.size();j++)//循环所有项目组的人
+//			{
+//    			UserInfo ui = listuixmz.get(j);
+//    			for(int i=0;i<listmcwork.size();i++)//循环所有工作日
+//				{
+//					MyCalendar mc = listmcwork.get(i);
+//					System.out.println(mc.getDate()+ui.getUsername());
+//					KqjlDaily kd = ikm.methoForXMZ(mc,ui);
+//					kddao.merge(kd);
+//				}
+//			}
     		for(int j=0;j<listuiqita.size();j++)//循环所有其他
 			{
     				UserInfo ui = listuiqita.get(j);

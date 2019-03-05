@@ -16,8 +16,8 @@ public class UassCode extends AbstractUassCode implements java.io.Serializable {
 
     
     /** full constructor */
-    public UassCode(String pool, Integer paixu, String code, String detail) {
-        super(pool, paixu, code, detail);        
+    public UassCode(String pool, String part, Integer paixu, String code, String detail) {
+        super(pool, part, paixu, code, detail);        
     }
    
 }
