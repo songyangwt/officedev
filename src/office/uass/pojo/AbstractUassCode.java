@@ -14,6 +14,7 @@ public abstract class AbstractUassCode  implements java.io.Serializable {
 
      private Integer id;
      private String pool;
+     private String part;
      private Integer paixu;
      private String code;
      private String detail;
@@ -27,8 +28,9 @@ public abstract class AbstractUassCode  implements java.io.Serializable {
 
     
     /** full constructor */
-    public AbstractUassCode(String pool, Integer paixu, String code, String detail) {
+    public AbstractUassCode(String pool, String part, Integer paixu, String code, String detail) {
         this.pool = pool;
+        this.part = part;
         this.paixu = paixu;
         this.code = code;
         this.detail = detail;
@@ -51,6 +53,14 @@ public abstract class AbstractUassCode  implements java.io.Serializable {
     
     public void setPool(String pool) {
         this.pool = pool;
+    }
+
+    public String getPart() {
+        return this.part;
+    }
+    
+    public void setPart(String part) {
+        this.part = part;
     }
 
     public Integer getPaixu() {

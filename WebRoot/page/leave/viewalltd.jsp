@@ -81,18 +81,12 @@ $('#chutuan').attr('value',x[2].value);
 										<option value="1">综合与生产管理处</option>
 										<option value="2">合规与监督二处</option>
 										<option value="3">通用业务二处</option>
-										<option value="4">员工响应团队</option>
 										<option value="5">研发支持二处</option>
 										<option value="6">专业处理二处</option>
-										<option value="7">业务处理1组</option>
-										<option value="8">业务处理2组</option>
-										<option value="9">业务处理3组</option>
-										<option value="10">业务处理4组</option>
-										<option value="11">业务处理5组</option>
-										<option value="12">专业处理1组</option>
-										<option value="13">专业处理2组</option>
-										<option value="14">专业处理3组</option>
 									</select>
+									</c:if>
+									<c:if test="${zhi=='2'}">
+									<input type="hidden" name="chutuan" id="chutuan" value="${chutuan}"/>
 									</c:if>
 									请假人
 									<input style="width: 70px" type="text" name="applicant" id="applicant" value="${strtemp}"/>

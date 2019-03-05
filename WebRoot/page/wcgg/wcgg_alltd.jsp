@@ -87,6 +87,9 @@ $('#chutuan').attr('value',x[0].value);
 										<option value="12">专业处理3组</option>
 									</select>
 									</c:if>
+									<c:if test="${zhi=='2'}">
+									<input type="hidden" name="chutuan" id="chutuan" value="${chutuan}"/>
+									</c:if>
 									姓名	
 									<input type="text" name="name" value="${strtemp}"/>								
 									

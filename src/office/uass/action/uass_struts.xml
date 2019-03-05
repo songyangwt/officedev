@@ -47,7 +47,19 @@
 			<result name="success">/page/uass/uasspt_page.jsp</result>
 		</action>
 		
-		<!-- 员工用户COST行内用户 -->
+		<!-- 员工用户COST行内用户 --> 
+		<action name="uschCOSTmng" class="office.uass.action.UschCOSTMNG">
+			<result name="success">/page/uass/uasscost_mng.jsp</result>
+		</action>
+		<action name="uschCOSTtoupdate" class="office.uass.action.UschCOSTToupdate">
+			<result name="success">/page/uass/uasscost_update.jsp</result>
+		</action>
+		<action name="uschCOSTupdate" class="office.uass.action.UschCOSTUpdate">
+			<result name="success">/page/public/successnoreturn.jsp</result>
+		</action>
+		<action name="uschCOSTdel" class="office.uass.action.UschCOSTDel">
+			<result name="success">/page/public/success.jsp</result>
+		</action>
 		<action name="uschshowpage" class="office.uass.action.UschShowPage">
 			<result name="success">/page/uass/uasschn_page.jsp</result>
 		</action>

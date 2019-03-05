@@ -1,5 +1,9 @@
 #MyEclipse Hibernate Properties
+<<<<<<< HEAD
+#Fri Jan 04 14:43:06 CST 2019
+=======
 #Fri Nov 30 10:49:58 CST 2018
+>>>>>>> refs/remotes/origin/master
 sessionFactoryName=office.srzm.HibernateSessionFactory
 genBasicCompId=false
 profile=

@@ -209,12 +209,12 @@ public class SubYgxxPage {
 				//trans.rollback();
 				return "failed";
 			}
-			if(!ifsamequarter(begindate,enddate))
-			{
-				message = "失败！起始日期和截止日期跨季度，请拆成两条提交";
-				//trans.rollback();
-				return "failed";
-			}
+//			if(!ifsamequarter(begindate,enddate))
+//			{
+//				message = "失败！起始日期和截止日期跨季度，请拆成两条提交";
+//				//trans.rollback();
+//				return "failed";
+//			}
 			//计算halfday
 			if(RadioGroup1.equals("xw"))
 			{
