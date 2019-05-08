@@ -127,24 +127,28 @@ public class ViewTpUnderDetail {
  	    UserInfo uitbn = uidao.findByName(tp.getTbname());
  	    UserInfo uiviewer = uidao.findByNewNumber(newnumber);
  	    username = uiviewer.getUsername();
-	    //if(uiapl.getPosition())
- 	   if(uiviewer.getAuthority().contains("T"))//调班管理员审批
+ 	   UserInfo uifq = uidao.findByNewNumber(tp.getApplicant());//发起人名字
+ 	  UserInfo ui = uidao.findByName(tp.getTbname());//调班人名字 
+ 	   //if(uiapl.getPosition())
+ 	   if(uiviewer.getAuthority().contains("C"))//调班管理员审批
  	   {
    		nextunder = "no";
  	   }
  	   else if(tp.getStatus()==1)//第一个组长审批
 	    {
- 		   	UserInfo uifq = uidao.findByNewNumber(tp.getApplicant());//发起人名字
-	    	UserInfo ui = uidao.findByName(tp.getTbname());//调班人名字
+ 		   	
+	    	
 	    	if(uiapl.getPosition().substring(4, 5).equals(uitbn.getPosition().substring(4, 5)))//同一个组
 	    	{
-	    		listui = uidao.findByAuthorityAndPosition("T", "");
+	    		//listui = uidao.findByAuthorityAndPosition("T", "");
+	    		listui = uidao.findTuanByAuthorityAndChu("C",ui.getPosition().substring(2, 3));
 	    	}
 	    	else
 	    	{
 	    		if(uifq.getAuthority().contains("D"))
 	    		{
-	    			listui = uidao.findByAuthorityAndPosition("T", "");
+	    			//listui = uidao.findByAuthorityAndPosition("T", "");
+	    			listui = uidao.findTuanByAuthorityAndChu("C",ui.getPosition().substring(2, 3));
 	    		}
 	    		else
 	    		{
@@ -154,7 +158,8 @@ public class ViewTpUnderDetail {
 	    }
 	    else//第二个人审批
 	    {
-	    	listui = uidao.findByAuthorityAndPosition("T", "");
+	    	//listui = uidao.findByAuthorityAndPosition("T", "");
+	    	listui = uidao.findTuanByAuthorityAndChu("C",ui.getPosition().substring(2, 3));
 	    }
  	    listlp = lpdao.findAllByNumber(number);
  	    dai = Integer.parseInt(number.substring(12, 13));//20160711KQQS00001

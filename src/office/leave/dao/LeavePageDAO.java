@@ -1277,7 +1277,7 @@ public class LeavePageDAO extends BaseHibernateDAO  {
             	 autho=mylist.get(0).getAuthority();
             }
             //如果为异常交易处员工
-            if(chu.equals("3")||chu.equals("6")){
+            if(chu.equals("3")||chu.equals("6")||chu.equals("2")){//增加合规分组
             	 String hql2 = "from UserInfo where position like '__"+chu+"_"+tuan+"' and authority like '%D%' order by paixu desc";// 条件查询HQL语句
                  Query q2 = getSession().createQuery(hql2);// 执行查询操作                 
                  mylist = q2.list(); 

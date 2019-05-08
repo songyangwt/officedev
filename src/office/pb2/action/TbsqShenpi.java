@@ -112,7 +112,7 @@ public class TbsqShenpi {
 // 					tp.setUndertake(xuanze);
 // 					tp.setStatus(2);
 // 				}
- 				if(ui.getAuthority().contains("T"))//审批完毕
+ 				if(ui.getAuthority().contains("C"))//审批完毕
  				{
  					String tempsb = "";
  					String tempxb = "";

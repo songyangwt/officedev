@@ -7,6 +7,7 @@ import office.pb.pojo.PbMx;
 import office.pb.pojo.ScpbTeam;
 import office.userinfo.dao.UserInfoDAO;
 import office.userinfo.pojo.UserInfo;
+import office.util.UserUtil;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -93,7 +94,9 @@ public class GetJihua {
  			    {
  			    	if(ui.getPosition().substring(2, 3).equals(tbui.getPosition().substring(2, 3))&&ui.getPosition().substring(4, 5).equals(tbui.getPosition().substring(4, 5)))//同一处室
  			    	{
- 			    		bossname="（排班管理员）"+uipb.getUsername()+":"+uipb.getNewnumber();
+ 			    		//bossname="（排班管理员）"+uipb.getUsername()+":"+uipb.getNewnumber();
+ 			    		UserInfo uic = uidao.findTuanByAuthorityAndChu("C",ui.getPosition().substring(2, 3)).get(0);
+ 			    		bossname="（团队负责人）"+uic.getUsername()+":"+uic.getNewnumber();
  			    	}
  			    	else
  			    	{

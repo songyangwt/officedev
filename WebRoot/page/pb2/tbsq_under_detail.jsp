@@ -135,13 +135,13 @@ b{
     				选择审批人
     			</td>
     			<td colspan="5">
-    				<select name="xuanze">
+    				<select name="xuanze" id="xuanze">
         				<option value="wu">请选择下一级审批人</option>
         					<c:forEach items="${listui}" var="user" varStatus="status">
         					<c:if test="${newnumber!=user.newnumber}">
-        						<option value="${user.newnumber}"> ${user.username}
+        						<option value="${user.newnumber}"> ${user.username}</option>
         					</c:if>	
-        						</option>
+        						
         					</c:forEach>
         			</select>
     			</td>
